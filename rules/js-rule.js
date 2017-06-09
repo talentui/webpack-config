@@ -11,7 +11,8 @@ module.exports = {
                 {
                     target: {
                         browsers: ["ie >= 9"]
-                    }
+                    },
+                    modules: false
                 }
             ],
             "stage-0",
