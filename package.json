@@ -7,7 +7,7 @@
     "email": "liguoming@beisen.com"
   },
   "repository": {
-    "url": ""
+    "url": "git@gitlab.beisencorp.com:ux-cnpm/talent-ui-webpack-config.git"
   },
   "license": "MIT",
   "dependencies": {
