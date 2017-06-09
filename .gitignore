@@ -1,0 +1,52 @@
+### SublimeText ###
+*.sublime-workspace
+/.idea/
+
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+### Windows ###
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# App specific
+
+node_modules/
+.tmp
+/webapp/src/main.js
+
+#lib#
+/lib/
+
+#npm#
+npm-debug.log
+
+#.task#
+*.task
+
+#static-site#
+#用来生成demo站点所用的程序
+static-site/
+
+dist/
+tmp.text
+error.text
+
+src/@beisen/
