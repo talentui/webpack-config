@@ -1,12 +1,9 @@
 const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
-var { buildProd, dllList } = global["talent-ui-runtime"];
-var afterFix = buildProd ? "" : "_dev";
+var { dllList } = global["talent-ui-runtime"];
 
 module.exports = dllList.map(dll => {
     return new AddAssetHtmlPlugin({
-        filepath: require.resolve(
-            `${dll}/build/${dll}${afterFix}.js`
-        ),
+        filepath: require.resolve(dll.file),
         includeSourcemap: false
     });
 });

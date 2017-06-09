@@ -9,10 +9,10 @@ module.exports = (options = {}) => {
         devServer: process.env.DEV_SERVER === "on",
         buildProd,
         appRoot,
-        dllList: options.dlls
+        dllList: options.dllList
     };
     return {
-        context: options.root,
+        context: appRoot,
         entry: {
             main: options.entry || "./src/entry.js"
         },
