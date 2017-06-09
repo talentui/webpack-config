@@ -8,7 +8,8 @@ module.exports = (options = {}) => {
     global["talent-ui-runtime"] = {
         devServer: process.env.DEV_SERVER === "on",
         buildProd,
-        appRoot
+        appRoot,
+        dllList: options.dlls
     };
     return {
         context: options.root,

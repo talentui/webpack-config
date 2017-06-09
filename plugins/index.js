@@ -9,12 +9,12 @@ const plugins = [
               require("./hot-module-replacement-plugin"),
               require("./named-modules-plugin"),
               require("./html-webpack-plugin"),
-              require("./add-asset-html-plugin")
+              ...require("./add-asset-html-plugin")
           ]
         : []),
     require("./common-chunk-plugin"),
     require("./extract-text-plugin"),
-    require("./dll-reference-plugin")
+    ...require("./dll-reference-plugin")
 ];
 
 if (buildProd) plugins.push(require("./uglify-js-plugin"));
