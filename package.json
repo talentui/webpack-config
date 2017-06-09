@@ -6,6 +6,12 @@
     "name": "Li Guoming",
     "email": "liguoming@beisen.com"
   },
+  "maintainers": [
+    {
+      "name": "Li Guoming",
+      "email": "liguoming@beisen.com"
+    }
+  ],
   "repository": {
     "url": "git@gitlab.beisencorp.com:ux-cnpm/talent-ui-webpack-config.git"
   },
