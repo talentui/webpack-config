@@ -3,6 +3,20 @@ module.exports = {
     exclude: /node_modules/,
     loader: "babel-loader",
     options: {
-        cacheDirectory: true
+        babelrc:false,
+        cacheDirectory: true,
+        presets: [
+            [
+                "env",
+                {
+                    target: {
+                        browsers: ["ie >= 9"]
+                    }
+                }
+            ],
+            "stage-0",
+            "react"
+        ],
+        plugins: ["syntax-dynamic-import", "transform-decorators-legacy"]
     }
 };
