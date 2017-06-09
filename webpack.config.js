@@ -11,6 +11,7 @@ module.exports = (options = {}) => {
         appRoot,
         dllList: options.dllList
     };
+
     return {
         context: appRoot,
         entry: {
