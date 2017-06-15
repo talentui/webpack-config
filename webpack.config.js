@@ -9,7 +9,8 @@ module.exports = (options = {}) => {
         devServer: process.env.DEV_SERVER === "on",
         buildProd,
         appRoot,
-        dllList: options.dllList
+        dllList: options.dllList || [],
+        hostPage: options.hostPage
     };
 
     return {
