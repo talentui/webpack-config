@@ -26,7 +26,17 @@
         dllList: [{
             manifest: '@beisen/talent-ui-dll/build/manifest.dev.json',
             file: '@beisen/talent-ui-dll/build/talent-ui-dll.dev.js'
-        }]
+        }],
+        // 指定本地开发环境的承载页，默认认为talent-ui-webpack-config提供的，提供的挂载点为bsMain
+        hostPage: path.resolve(__dirname, '../index.html')
+        // 浏览器支持列表, 这个会影响你代码打包的速度和文件体积，支持的越新越好
+        browsers: ["> 1%", "chrome >= 57"],
+        //模块查找目录
+        modulesDirectory: [path.resolve(__dirname, '../src'), 'node_modules' ]
+        // 设置别名，自己想像能干些什么吧。
+        alias: {
+            preact: 'react'
+        }
     })
 ```
 
