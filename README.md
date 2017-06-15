@@ -40,6 +40,15 @@
     })
 ```
 
+## NODE 环境变量设置
+talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配置，会影响到这些配置的环境变量有。
+> ASSET_PATH: 这个变量会影响到你构建代码时所设置的[publicPath](https://webpack.js.org/configuration/output/#output-publicpath), 因为在生产环境下我们使用了extractTextPlugin来拆分样式代码，所以运行时更改publicPath不太现实，所以我们只能为不同的环境构建不同的结果。
+
+> DEV_SERVER=on 如果设置这个的话就会启动webpack dev server, 并且加载htmlwebpackpulugin和addassethtmlplugin等插件。
+
+> NODE_ENV=production 会启动生产环境的打包
+
+
 ### 关于webpack中对dll的使用请参看[DllPLugin](https://webpack.js.org/plugins/dll-plugin/)
 
 ### Dll 列表
