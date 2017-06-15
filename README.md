@@ -32,7 +32,7 @@
         // 浏览器支持列表, 这个会影响你代码打包的速度和文件体积，支持的越新越好
         browsers: ["> 1%", "chrome >= 57"],
         //模块查找目录
-        modulesDirectory: [path.resolve(__dirname, '../src'), 'node_modules' ]
+        moduleDirectories: [path.resolve(__dirname, '../src'), 'node_modules' ]
         // 设置别名，自己想像能干些什么吧。
         alias: {
             preact: 'react'

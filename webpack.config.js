@@ -9,7 +9,7 @@ const buildProd = process.env.NODE_ENV === strProd;
  * dllList: optional dll列表 默认为空数组
  * hostPage: optional 本地承载页，需要是一个绝对路径, 默认的挂载点为#bsMain
  * browsers: optional 浏览器支持 默认为 > 1% 详情请看 https://github.com/ai/browserslist,
- * modulesDirectory: optional 数组 模块查找目录，默认为 node_modules,
+ * moduleDirectories: optional 数组 模块查找目录，默认为 node_modules,
  * resoveAlias: 使用Alias来方便一些模块的引入
  */
 
@@ -45,7 +45,7 @@ module.exports = (options = {}) => {
         },
         plugins: require("./plugins"),
         resolve: {
-            modules: options.modulesDirectory || ["node_modules"],
+            modules: options.moduleDirectories || ["node_modules"],
             alias: options.alias || {}
         },
         devServer: {
