@@ -1,16 +1,17 @@
+const { browsers } = global["talent-ui-runtime"];
 module.exports = {
     test: /\.(js)$/,
     exclude: /node_modules/,
     loader: "babel-loader",
     options: {
-        babelrc:false,
+        babelrc: false,
         cacheDirectory: true,
         presets: [
             [
                 "env",
                 {
                     target: {
-                        browsers: ["ie >= 9"]
+                        browsers: browsers || "> 1%"
                     },
                     modules: false
                 }
