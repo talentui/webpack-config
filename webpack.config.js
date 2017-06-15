@@ -22,7 +22,7 @@ module.exports = (options = {}) => {
         appRoot,
         dllList: options.dllList || [],
         hostPage: options.hostPage,
-        broswers: options.broswers
+        browsers: options.browsers
     };
 
     return {
