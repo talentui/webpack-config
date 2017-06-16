@@ -1,6 +1,6 @@
 {
   "name": "@beisen/talent-ui-webpack-config",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "main": "webpack.config.js",
   "author": {
     "name": "Li Guoming",

@@ -18,7 +18,6 @@ const plugins = [
 ];
 
 if (buildProd) plugins.push(require("./uglify-js-plugin"));
-debugger;
 
 module.exports = plugins;
 

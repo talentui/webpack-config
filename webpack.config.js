@@ -1,7 +1,6 @@
 const path = require("path");
 const { strProd } = require("./constants.js");
 const buildProd = process.env.NODE_ENV === strProd;
-const parseDll = require("./parse-dll");
 
 /**
  * @options
@@ -18,14 +17,14 @@ module.exports = (options = {}) => {
     const appRoot = options.root || path.resolve(__dirname, "../../");
     const ASSET_PATH = process.env.ASSET_PATH || (buildProd ? "/dist/" : "/");
     //使用全部变量保存配置项，给loaders和plugins使用
-    let projectRuntime = (global["talent-ui-runtime"] = {
+    let projectRuntime = global["talent-ui-runtime"] = {
         devServer: process.env.DEV_SERVER === "on",
         buildProd,
         appRoot,
         hostPage: options.hostPage,
         browsers: options.browsers
-    });
-    projectRuntime.dllList = parseDll(options.dllList);
+    };
+    projectRuntime.dllList = require("./parse-dll")(options.dllList);
 
     return {
         context: appRoot,
