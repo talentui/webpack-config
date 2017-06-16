@@ -7,7 +7,7 @@ module.exports = (dllList=[]) => {
             return dll;
         }else if(typeof(dll) === 'string'){
             let packageName = dll;
-            let version = require(dll+'package.json').version;
+            let version = require(`${dll}/package.json`).version;
             let {filename, manifest} = namingConvention(packageName, version, buildProd);
             return {
                 filename: `${dll}/lib/${filename}`,
