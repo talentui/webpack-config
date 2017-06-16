@@ -1,6 +1,6 @@
 {
   "name": "@beisen/talent-ui-webpack-config",
-  "version": "1.0.14",
+  "version": "1.0.16",
   "main": "webpack.config.js",
   "author": {
     "name": "Li Guoming",
@@ -17,6 +17,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@beisen/talent-ui-dll-naming-convention": "^1.0.0",
     "add-asset-html-webpack-plugin": "^2.0.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",

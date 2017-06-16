@@ -1,6 +1,7 @@
 const path = require("path");
 const { strProd } = require("./constants.js");
 const buildProd = process.env.NODE_ENV === strProd;
+const parseDll = require('./parse-dll');
 
 /**
  * @options
@@ -21,7 +22,7 @@ module.exports = (options = {}) => {
         devServer: process.env.DEV_SERVER === "on",
         buildProd,
         appRoot,
-        dllList: options.dllList || [],
+        dllList: parseDll(options.dllList),
         hostPage: options.hostPage,
         browsers: options.browsers
     };
