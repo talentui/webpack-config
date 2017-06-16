@@ -22,8 +22,13 @@
         port: 3000, 
         //devServer的host
         host: "127.0.0.1", 
-        // 这个是Dll列表，在你的应用中可以通过引入dll的方式引入一些共用的代码
-        dllList: [{
+        /*
+            dll列表，在你的应用中可以通过引入dll的方式引入一些共用的代码, 
+            支持字符串和{file, manifest}格式的对象
+            如果是字符串，代表这个dll是基于talent-ui-dll-webpack-config打包的dll,这样talent-ui-webpack-config可以自动解析路径
+            如果是自定义打包的，需要以对象的方式传递manifest和file
+        */ 
+        dllList: ['@beisen/talent-ui-dll',{
             manifest: '@beisen/talent-ui-dll/build/manifest.dev.json',
             file: '@beisen/talent-ui-dll/build/talent-ui-dll.dev.js'
         }],
@@ -35,7 +40,7 @@
         moduleDirectories: [path.resolve(__dirname, '../src'), 'node_modules' ]
         // 设置别名，自己想像能干些什么吧。
         alias: {
-            preact: 'react'
+            "react": 'preact'
         }
     })
 ```
@@ -54,3 +59,8 @@ talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配�
 ### Dll 列表
 
 * [talent-ui-dll](https://www.npmjs.com/package/@beisen/talent-ui-dll)
+* [talent-ui-dll-preact](https://www.npmjs.com/package/@beisen/talent-ui-dll-preact)
+
+### 生成dll的工具：
+
+* [talent-ui-dll-webpack-config](https://www.npmjs.com/package/@beisen/talent-ui-dll-webpack-config)
