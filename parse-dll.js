@@ -10,7 +10,7 @@ module.exports = (dllList=[]) => {
             let version = require(`${dll}/package.json`).version;
             let {filename, manifest} = namingConvention(packageName, version, buildProd);
             return {
-                filename: `${dll}/lib/${filename}`,
+                file: `${dll}/lib/${filename}`,
                 manifest: `${dll}/lib/${manifest}`
             }
         }else{
