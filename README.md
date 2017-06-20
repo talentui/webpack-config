@@ -72,4 +72,5 @@ talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配�
 ### 6月20号
 > 把DEV_SERVER的环境变量改成dev_server，感觉大写没啥用，写起来还麻烦
 
-> 添加 analyzer_server=on的配置，启动打包分析服务
+> 添加 analyzer_server=on的配置，启动打包分析服务 如图
+<img src="https://raw.githubusercontent.com/imlgm/tupian/master/2017/analyzer.png" style="width:600px" />
