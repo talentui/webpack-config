@@ -17,20 +17,20 @@ module.exports = (options = {}) => {
     const appRoot = options.root || path.resolve(__dirname, "../../");
     const ASSET_PATH = process.env.asset_path || (buildProd ? "/dist/" : "/");
     //使用全部变量保存配置项，给loaders和plugins使用
-    let projectRuntime = global["talent-ui-runtime"] = {
+    let projectRuntime = (global["talent-ui-runtime"] = {
         devServer: process.env.dev_server === "on",
         buildProd,
         appRoot,
         hostPage: options.hostPage,
         browsers: options.browsers
-    };
-    projectRuntime.dllList = require("./parse-dll")(options.dllList);
+    });
+    projectRuntime.dllList = require("./helpers/parse-dll")(options.dllList);
+
+    let entry = require("./helpers/parse-entry")(options.entry);
 
     return {
         context: appRoot,
-        entry: {
-            main: options.entry || "./src/entry.js"
-        },
+        entry,
         output: {
             filename: buildProd
                 ? "[name]-[chunkhash].bundle.min.js"
