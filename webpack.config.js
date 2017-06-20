@@ -18,7 +18,7 @@ module.exports = (options = {}) => {
     const ASSET_PATH = process.env.ASSET_PATH || (buildProd ? "/dist/" : "/");
     //使用全部变量保存配置项，给loaders和plugins使用
     let projectRuntime = global["talent-ui-runtime"] = {
-        devServer: process.env.DEV_SERVER === "on",
+        devServer: process.env.dev_server === "on",
         buildProd,
         appRoot,
         hostPage: options.hostPage,

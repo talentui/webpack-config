@@ -49,7 +49,9 @@
 talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配置，会影响到这些配置的环境变量有。
 > ASSET_PATH: 这个变量会影响到你构建代码时所设置的[publicPath](https://webpack.js.org/configuration/output/#output-publicpath), 因为在生产环境下我们使用了extractTextPlugin来拆分样式代码，所以运行时更改publicPath不太现实，所以我们只能为不同的环境构建不同的结果。
 
-> DEV_SERVER=on 如果设置这个的话就会启动webpack dev server, 并且加载htmlwebpackpulugin和addassethtmlplugin等插件。
+> dev_server=on 如果设置这个的话就会启动webpack dev server, 并且加载htmlwebpackpulugin和addassethtmlplugin等插件。
+
+> analyzer_server = on 如果设置这个的话就会启动webpack bundle analyzer, 提供一个可视化的图表。
 
 > NODE_ENV=production 会启动生产环境的打包
 
@@ -64,3 +66,10 @@ talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配�
 ### 生成dll的工具：
 
 * [talent-ui-dll-webpack-config](https://www.npmjs.com/package/@beisen/talent-ui-dll-webpack-config)
+
+## 更新
+
+### 6月20号
+> 把DEV_SERVER的环境变量改成dev_server，感觉大写没啥用，写起来还麻烦
+
+> 添加 analyzer_server=on的配置，启动打包分析服务
