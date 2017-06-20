@@ -5,7 +5,7 @@ var { devServer, buildProd } = global["talent-ui-runtime"];
 const plugins = [
     require("./define-plugin"),
     ...require("./dll-reference-plugin"),
-    ...require("./module-concatenation-plugin"),
+    require("./module-concatenation-plugin"),
     ...(devServer
         ? [
               require("./hot-module-replacement-plugin"),
