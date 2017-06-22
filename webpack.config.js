@@ -23,7 +23,9 @@ module.exports = (options = {}) => {
         appRoot,
         hostPage: options.hostPage,
         browsers: options.browsers,
-        useCommonChunk: options.useCommonChunk === undefined ? true : options.useCommonChunk
+        useCommonChunk: options.useCommonChunk === undefined
+            ? true
+            : options.useCommonChunk
     });
     projectRuntime.dllList = require("./helpers/parse-dll")(options.dllList);
 
@@ -55,7 +57,8 @@ module.exports = (options = {}) => {
             host: options.host || "127.0.0.1",
             hot: true,
             contentBase: path.resolve(appRoot, "dist/"),
-            publicPath: "/"
+            publicPath: "/",
+            headers: { "Access-Control-Allow-Origin": "*" }
         },
         target: "web",
         devtool: buildProd ? "cheap-source-map" : "eval"
