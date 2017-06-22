@@ -73,6 +73,14 @@ talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配�
 
 ## 更新
 
+### 6月 22号
+
+> 添加配置项useCommonChunk来禁用CommonChunPlugin
+
+> 调整htmlwebpackplugin输出的脚本顺序
+
+> 允许使用common Entry来指定哪些模块应该放到commonChunk中去
+
 ### 6月20号
 > 升级到 webpack 3.0
 
