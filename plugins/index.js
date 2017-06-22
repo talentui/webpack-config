@@ -1,6 +1,6 @@
 const path = require("path");
 var { strProd, strDev } = require("../constants.js");
-var { devServer, buildProd } = global["talent-ui-runtime"];
+var { devServer, buildProd, useCommonChunk } = global["talent-ui-runtime"];
 
 const plugins = [
     require("./define-plugin"),
@@ -14,10 +14,11 @@ const plugins = [
               ...require("./add-asset-html-plugin")
           ]
         : []),
-    require("./common-chunk-plugin"),
     require("./extract-text-plugin"),
     
 ];
+
+if(useCommonChunk) plugins.push(require("./common-chunk-plugin"))
 
 if (buildProd) {
     plugins.push(require("./uglify-js-plugin"));

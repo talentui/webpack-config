@@ -41,7 +41,10 @@
         // 设置别名，自己想像能干些什么吧。
         alias: {
             "react": 'preact'
-        }
+        },
+
+        //是否使用commonChunk, 默认为true, 你可以使用这个来禁用commonchunk
+        useCommonChunk: false, //
     })
 ```
 
