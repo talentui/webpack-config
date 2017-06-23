@@ -49,7 +49,7 @@ module.exports = (options = {}) => {
         },
         plugins: require("./plugins"),
         resolve: {
-            modules: options.moduleDirectories || ["node_modules"],
+            modules: options.moduleDirectories || [path.resolve(appRoot,'./src'), "node_modules"],
             alias: options.alias || {}
         },
         devServer: {
