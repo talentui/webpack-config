@@ -10,7 +10,7 @@ module.exports = {
             [
                 "env",
                 {
-                    target: {
+                    targets: {
                         browsers: browsers || "> 1%"
                     },
                     modules: false
