@@ -1,4 +1,11 @@
-const { browsers } = global["talent-ui-runtime"];
+const { targetBrowsers, targets:tgt, transformInclude, transformExclude } = global["talent-ui-runtime"];
+
+targets = tgt || {
+    targets: {
+        browsers: targetBrowsers
+    }
+}
+
 module.exports = {
     test: /\.(js)$/,
     exclude: /node_modules/,
@@ -10,10 +17,10 @@ module.exports = {
             [
                 "env",
                 {
-                    targets: {
-                        browsers: browsers || "> 1%"
-                    },
-                    modules: false
+                    targets,
+                    modules: false,
+                    include: transformInclude,
+                    exclude: transformExclude
                 }
             ],
             "stage-0",

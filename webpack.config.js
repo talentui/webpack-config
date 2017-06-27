@@ -22,10 +22,13 @@ module.exports = (options = {}) => {
         buildProd,
         appRoot,
         hostPage: options.hostPage,
-        browsers: options.browsers,
+        targetBrowsers: options.targetBrowsers,
+        targets: options.targets
         useCommonChunk: options.useCommonChunk === undefined
             ? true
-            : options.useCommonChunk
+            : options.useCommonChunk,
+        transformInclude: options.transformInclude || [],
+        transformExclude: options.transformExclude || []
     });
     projectRuntime.dllList = require("./helpers/parse-dll")(options.dllList);
 
