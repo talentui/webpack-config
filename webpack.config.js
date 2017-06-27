@@ -22,8 +22,8 @@ module.exports = (options = {}) => {
         buildProd,
         appRoot,
         hostPage: options.hostPage,
-        targetBrowsers: options.targetBrowsers,
-        targets: options.targets
+        targetBrowsers: options.targetBrowsers,
+        targets: options.targets,
         useCommonChunk: options.useCommonChunk === undefined
             ? true
             : options.useCommonChunk,

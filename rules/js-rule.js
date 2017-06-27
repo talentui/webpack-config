@@ -1,4 +1,4 @@
-const { targetBrowsers, targets:tgt, transformInclude, transformExclude } = global["talent-ui-runtime"];
+const { targetBrowsers, targets:tgt, transformInclude, transformExclude } = global["talent-ui-runtime"];
 
 targets = tgt || {
     targets: {
@@ -20,7 +20,8 @@ module.exports = {
                     targets,
                     modules: false,
                     include: transformInclude,
-                    exclude: transformExclude
+                    exclude: transformExclude,
+                    useBuiltIns: true
                 }
             ],
             "stage-0",
