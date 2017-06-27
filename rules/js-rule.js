@@ -19,7 +19,8 @@ module.exports = {
                     modules: false,
                     include: transformInclude,
                     exclude: transformExclude,
-                    debug: !buildProd
+                    useBuiltIns: true,
+                    debug: !buildProd,
                 }
             ],
             "stage-0",

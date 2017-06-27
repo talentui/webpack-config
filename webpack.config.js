@@ -64,6 +64,6 @@ module.exports = (options = {}) => {
             headers: { "Access-Control-Allow-Origin": "*" }
         },
         target: "web",
-        devtool: buildProd ? "cheap-source-map" : "eval"
+        devtool: buildProd ? "cheap-source-map" : false
     };
 };
