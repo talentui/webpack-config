@@ -64,6 +64,49 @@
     })
 ```
 
+## 关于polyfill和babel-plugins, 
+
+### 有什么不同？ 
+
+> `plugins`会在转换代码的时候检测一些特殊的语法，比如箭头函数，展开运算符，Generator等等, 当碰到这些语法的时候，会被转换成标准的es5兼容的代码，这样我们可以在低版本的浏览器上也能使用这些语言新特性进行开发。 但是也有一些plugins是用来转换语言的新方法的，比如object.assign, 你就可以使用babel-plugin-transform-object-assign这个plugins来转换Object.assign方法的调用，结果是这样的
+
+```js
+    //转换前
+    Object.assign(a, b);
+```
+
+```js
+    //转换后
+    var _extends = ...;
+    _extends(a, b);
+```
+
+我从测试的项目截了个图，可以更直观的了解下：
+<img src='http://gitlab.beisencorp.com/ux-cnpm/talent-ui-webpack-config/raw/master/assets/object.assign.png' />
+
+注意，在不同的模块中，只要出现Object.assign的地方, 都会定义一个_extends方法， （同模块只定义一次。）这样的话，我们的代码中其实会有很多相同的代码块存在，感觉不太合适。另外一种办法就是polyfill.
+
+> `polyfill`是一种类似补丁的东西，你需要有这个方法，但代码的运行环境可能不支持这个方法，比如Object.assign. 那怎么办，使用plugins会导致上面说的问题。那我们就在所有的代码之前，引入这么段[代码](https://github.com/zloirock/core-js/blob/master/modules/_object-assign.js), 这段代码会在运行时检查当前浏览器是否支持Object.assign, 如果支持，就使用内置的方法，如果不支持，我们就在相同的位置给出方法的定义。这样开发自己写的代码就不需要做任何的转换了。也不会不停的出现相同的定义。看起来是一个不错的方式，但是这种polyfill会污染全局对象。
+
+    以上两种方法使用哪一种，需要开发人员根据自己的情况做出判断，并不是哪一种就一定好于另外一种。
+
+## 我们的选择。
+
+    我们选择使用所有的关于新语法特性的plugins, 但是对于一些新的方法，我们使用polyfill的方式，我们认为这样可以减少代码的体积，并且采用碰到即引入需要的polyfill的方式来按需添加。
+
+在使用Babel进行代码转换的时候，对于新的语法特性我们使用了[这些plugins](https://github.com/babel/babel-preset-env/blob/master/data/plugins.json),
+但是对于[新方法]
+
+但是对于polyfill的选择我们一度限入了一种尴尬的情况，对于Talent_UI的项目，我们依然要兼容IE, 我们目前可以根据开发者配置的要支持的浏览器版本来识别，哪些方法是目标浏览器不支持的，然后自动引入对应的polyfill， 但是不管你要兼容IE哪个版本，相当多的polyfill被引入了进来，这些被引入进来的polyfill大部分又是我们开发时用不到的。肿么办？
+
+### 两种办法
+
+* 一种是不管你用没用到，只要你目标浏览器不支持这些方法，我们都统统引进来
+* 一种是我们根据目前的开发情况，选择性的引入一些常用的polyfill, 然后开放给开放人员一个配置项，可以手动选择添加哪些不存在的polyfill
+
+对于项目本身来说其实第二种是比较好的，即能满足我们的需求，又可以减少冗余的代码。
+
+
 ## NODE 环境变量设置
 talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配置，会影响到这些配置的环境变量有。
 > `asset_path`: 这个变量会影响到你构建代码时所设置的[publicPath](https://webpack.js.org/configuration/output/#output-publicpath), 因为在生产环境下我们使用了extractTextPlugin来拆分样式代码，所以运行时更改publicPath不太现实，所以我们只能为不同的环境构建不同的结果。
