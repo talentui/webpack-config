@@ -1,10 +1,14 @@
 {
   "name": "@beisen/talent-ui-webpack-config",
-  "version": "1.1.16",
-  "main": "webpack.config.js",
+  "version": "1.1.17",
+  "main": "./webpack.config.js",
   "author": {
     "name": "Li Guoming",
     "email": "liguoming@beisen.com"
+  },
+  "scripts": {
+    "data": "node ./data/generate-config-data.js",
+    "prepublish": "yarn run data"
   },
   "maintainers": [
     {
@@ -36,5 +40,8 @@
     "webpack": "^3.0.0",
     "webpack-bundle-analyzer": "^2.8.2",
     "webpack-dev-server": "^2.5.0"
+  },
+  "devDependencies": {
+    "lodash": "^4.17.4"
   }
 }
