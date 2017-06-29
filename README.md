@@ -145,6 +145,10 @@ talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配�
 
 ## 更新
 
+### 6月29号
+
+> 把`webpack` `webpack-dev-server`放到devDependencies和peerDepencencies中，因为如果放在dependencies中，使用talent-ui-webpack-config的包还是需要手动安装webpack和webpack-dev-server,才能在npm scripts中访问到这两个包的可执行文件。
+
 ### 6月28号
 
 > 调整babel-loader exclude规则，匹配node\_modules但会忽略 node\_mdoules/@beisen/talent-ui打头的包，这就意味着像@beisen/talent-ui-bootstrap这样的包仍然会通过babel-loader进行转换。目的是为了让import 'babel-polyfill'被babel-preset-env进行处理。将来也可以简化发包的流程

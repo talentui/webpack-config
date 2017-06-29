@@ -20,7 +20,7 @@ const innerPlugins = userHasDefinedTargets
     : require("../data/plugins.json");
 
 // 在innerPlugins和用户配置的include中去掉重复的部分。
-var includeFeature = require("lodash/uniq.js")([
+var includeFeature = require("lodash.uniq")([
     ...innerPlugins,
     ...transformInclude
 ]);
