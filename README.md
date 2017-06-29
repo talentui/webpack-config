@@ -147,6 +147,8 @@ talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配�
 
 ### 6月28号
 
+> 调整babel-loader exclude规则，匹配node\_modules但会忽略 node\_mdoules/@beisen/talent-ui打头的包，这就意味着像@beisen/talent-ui-bootstrap这样的包仍然会通过babel-loader进行转换。目的是为了让import 'babel-polyfill'被babel-preset-env进行处理。将来也可以简化发包的流程
+
 > 更新配置，当不传递targets相关的数据的时候，默认使用`chrome >= 58 `的浏览器支持，但会引入所有的plugins, 
 
 > 当`transformInclude` 和 `transformExclude`都设置了相同的插件或者polyfill的时候，`transformExclude`会生效，include失效。
