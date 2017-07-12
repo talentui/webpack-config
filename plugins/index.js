@@ -3,9 +3,10 @@ var { strProd, strDev } = require("../constants.js");
 var { devServer, buildProd, useCommonChunk } = global["talent-ui-runtime"];
 
 const plugins = [
+    require("./module-concatenation-plugin"),
     require("./define-plugin"),
     ...require("./dll-reference-plugin"),
-    // require("./module-concatenation-plugin"),
+
     ...(devServer
         ? [
               require("./hot-module-replacement-plugin"),
@@ -14,11 +15,10 @@ const plugins = [
               ...require("./add-asset-html-plugin")
           ]
         : []),
-    require("./extract-text-plugin"),
-    
+    require("./extract-text-plugin")
 ];
 
-if(useCommonChunk) plugins.push(require("./common-chunk-plugin"))
+if (useCommonChunk) plugins.push(require("./common-chunk-plugin"));
 
 if (buildProd) {
     plugins.push(require("./uglify-js-plugin"));
