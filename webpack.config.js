@@ -11,6 +11,12 @@ const buildProd = process.env.NODE_ENV === strProd;
  * browsers: optional 浏览器支持 默认为 > 1% 详情请看 https://github.com/ai/browserslist,
  * moduleDirectories: optional 数组 模块查找目录，默认为 node_modules,
  * resoveAlias: 使用Alias来方便一些模块的引入
+ * alias
+ * transformInclude:
+ * transofrmExclude:
+ * port
+ * host
+ * 
  */
 
 module.exports = (options = {}) => {

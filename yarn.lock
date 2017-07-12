@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@beisen/talent-ui-dll-naming-convention@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@beisen/talent-ui-dll-naming-convention/-/talent-ui-dll-naming-convention-1.0.0.tgz#8577a93d8df0402960b13e1d365e0b0d0d87de55"
+"@beisen/talent-ui-dll-naming-convention@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@beisen/talent-ui-dll-naming-convention/-/talent-ui-dll-naming-convention-1.0.1.tgz#a057bd92b753964ddd4aad95e9e1c76ce84670e3"
 
 abbrev@1:
   version "1.1.0"
