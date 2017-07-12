@@ -145,6 +145,15 @@ talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配�
 
 ## 更新
 
+### 7月12号
+> 更新模块查找目录严格为`path.resolve(appRoot, './src')`和 `path.reslove(appRoot, './node_modules')`, 以防止打包不同版本的同一个库进来。package下的node\_modules不再进行处理。项目管理者需要处理类似这样的依赖问题。
+
+> 设置`path.resolve(appRoot, './src')`的别名为@，当导入./src下的模块时，可以直接使用`import helpers from '@/helpers'`这样的写法
+
+> modules.alias的扩展是会自动进行合并。如果你配置了alias为`alias:{#:'path'}`, 得到的结果是`{@: path.resolve(appRoot, './src'), '#': 'path'}`
+
+> 解决问题：如果设置多个entry的话，必须要在第一个加载的entry的第一个import必须是 `import 'babel-polyfill'`
+
 ### 6月29号
 
 > 把`webpack` `webpack-dev-server`放到devDependencies和peerDepencencies中，因为如果放在dependencies中，使用talent-ui-webpack-config的包还是需要手动安装webpack和webpack-dev-server,才能在npm scripts中访问到这两个包的可执行文件。
