@@ -22,7 +22,7 @@ const buildProd = process.env.NODE_ENV === strProd;
 module.exports = (options = {}) => {
     const appRoot = options.root || path.resolve(__dirname, "../../");
     const ASSET_PATH = process.env.asset_path || "";
-    const srcDir = path.resolve(appRoot, './src');
+    const srcDir = path.resolve(appRoot, "./src");
     //使用全部变量保存配置项，给loaders和plugins使用
     let projectRuntime = (global["talent-ui-runtime"] = {
         devServer: process.env.dev_server === "on",
@@ -64,9 +64,12 @@ module.exports = (options = {}) => {
                 srcDir,
                 path.resolve(appRoot, "./node_modules")
             ],
-            alias: options.alias || {
-                '@': srcDir
-            }
+            alias: Object.assign(
+                {
+                    "@": srcDir
+                },
+                options.alias
+            )
         },
         devServer: {
             port: options.port || 3000,
