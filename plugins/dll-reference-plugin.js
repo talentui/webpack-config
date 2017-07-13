@@ -1,4 +1,3 @@
-var { buildProd } = global["talent-ui-runtime"];
 const path = require("path");
 const { appRoot, dllList } = global["talent-ui-runtime"];
 

@@ -1,6 +1,8 @@
 const path = require("path");
 var { strProd, strDev } = require("../constants.js");
-var { devServer, buildProd, useCommonChunk } = global["talent-ui-runtime"];
+var { devServer, buildProd, useCommonChunk, analysis, friendly } = global[
+    "talent-ui-runtime"
+];
 
 const plugins = [
     // require("./module-concatenation-plugin"),
@@ -18,12 +20,14 @@ const plugins = [
     require("./extract-text-plugin")
 ];
 
+if (friendly) plugins.push(require("./friendly-errors-webpack-plugin"));
+
 if (useCommonChunk) plugins.push(require("./common-chunk-plugin"));
 
 if (buildProd) {
     plugins.push(require("./uglify-js-plugin"));
 }
-if (process.env.analyzer_server === "on") {
+if (analysis) {
     plugins.push(require("./bundle-analyzer-plugin"));
 }
 
