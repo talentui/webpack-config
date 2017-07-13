@@ -20,7 +20,7 @@ const plugins = [
     require("./extract-text-plugin")
 ];
 
-if (friendly) plugins.push(require("./friendly-errors-webpack-plugin"));
+if (friendly && devServer) plugins.push(require("./friendly-errors-webpack-plugin"));
 
 if (useCommonChunk) plugins.push(require("./common-chunk-plugin"));
 

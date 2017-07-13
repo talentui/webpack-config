@@ -145,6 +145,14 @@ talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配�
 
 ## 更新
 
+### 7月13号
+
+> 默认短路径使用&代替@, 避免与scope冲突
+
+> dev Server默认启用friendly errors plugin, 使用friendly=off关闭
+
+> analyzer_server改为analysis
+
 ### 7月12号
 > 重新启用ModuleConcatenationPlugin， 记住一定要设置正确的context
 
