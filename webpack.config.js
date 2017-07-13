@@ -71,7 +71,7 @@ module.exports = (options = {}) => {
             ],
             alias: Object.assign(
                 {
-                    "$": srcDir
+                    "&": srcDir
                 },
                 options.alias
             )
@@ -82,7 +82,8 @@ module.exports = (options = {}) => {
             hot: true,
             contentBase: path.resolve(appRoot, "dist/"),
             publicPath: "/",
-            headers: { "Access-Control-Allow-Origin": "*" }
+            headers: { "Access-Control-Allow-Origin": "*" },
+            quiet: projectRuntime.friendly
         },
         target: "web",
         devtool: buildProd ? "cheap-source-map" : false
