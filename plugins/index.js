@@ -3,7 +3,7 @@ var { strProd, strDev } = require("../constants.js");
 var { devServer, buildProd, useCommonChunk } = global["talent-ui-runtime"];
 
 const plugins = [
-    require("./module-concatenation-plugin"),
+    // require("./module-concatenation-plugin"),
     require("./define-plugin"),
     ...require("./dll-reference-plugin"),
 
