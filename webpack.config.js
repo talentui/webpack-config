@@ -52,7 +52,7 @@ module.exports = (options = {}) => {
         entry,
         output: {
             filename: buildProd
-                ? "[name]-[chunkhash].bundle.min.js"
+                ? "[name]-[chunkhash].chunk.min.js"
                 : "[name].chunk.js",
             chunkFilename: buildProd
                 ? "[name]-[chunkhash].chunk.min.js"
