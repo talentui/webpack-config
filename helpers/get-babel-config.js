@@ -1,10 +1,13 @@
+const envConst = require('../constants.js');
 module.exports = function({
-    buildProd,
     targetBrowsers,
     targets: tgt,
     transformInclude,
     transformExclude
 }) {
+
+    const env = process.env.NODE_ENV || envConst.strDev;
+
     const userHasDefinedTargets = !!(targetBrowsers || tgt);
 
     // // 如果没有传递目标浏览器，则配置支持使用chrome > 58版本，减少plugins和polyfills的数量
@@ -37,7 +40,7 @@ module.exports = function({
                     include: includeFeature,
                     exclude: transformExclude,
                     useBuiltIns: true,
-                    debug: !buildProd
+                    debug: env === envConst.strDev
                 }
             ],
             "stage-0",
