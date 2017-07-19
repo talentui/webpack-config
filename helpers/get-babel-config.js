@@ -1,10 +1,11 @@
-const envConst = require('../constants.js');
-module.exports = function({
-    targetBrowsers,
-    targets: tgt,
-    transformInclude,
-    transformExclude
-}) {
+const envConst = require("../constants.js");
+module.exports = function(options = {}) {
+    let {
+        targetBrowsers,
+        targets: tgt,
+        transformInclude = [],
+        transformExclude = []
+    } = options;
 
     const env = process.env.NODE_ENV || envConst.strDev;
 
