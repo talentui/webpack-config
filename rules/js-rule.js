@@ -1,6 +1,6 @@
 const {
     targetBrowsers,
-    targets: tgt,
+    targets,
     transformInclude,
     transformExclude,
     buildProd
@@ -18,7 +18,7 @@ module.exports = {
         require("../helpers/get-babel-config.js")({
             buildProd,
             targetBrowsers,
-            targets: tgt,
+            targets,
             transformInclude,
             transformExclude
         })

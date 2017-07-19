@@ -1,7 +1,7 @@
 module.exports = function({
     buildProd,
     targetBrowsers,
-    targets,
+    targets: tgt,
     transformInclude,
     transformExclude
 }) {
