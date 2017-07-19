@@ -1,4 +1,5 @@
 module.exports = {
     strProd: "production",
-    strDev: "development"
+    strDev: "development",
+    strTest: "test"
 };
