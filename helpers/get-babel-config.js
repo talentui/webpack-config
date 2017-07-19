@@ -37,7 +37,7 @@ module.exports = function(options = {}) {
                 "env",
                 {
                     targets,
-                    modules: false,
+                    modules: env === envConst.strTest ? 'commonjs' : false,
                     include: includeFeature,
                     exclude: transformExclude,
                     useBuiltIns: true,
