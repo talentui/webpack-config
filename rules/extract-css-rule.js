@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const { extractStylePublicPath: publicPath } = require("../constants.js");
 
 module.exports = {
     test: /\.css$/,
@@ -10,6 +11,6 @@ module.exports = {
                 sourceMap: true
             }
         },
-        publicPath: '../'
+        publicPath
     })
 };

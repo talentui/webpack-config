@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const { extractStylePublicPath: publicPath } = require("../constants.js");
 
 module.exports = {
     test: /\.scss$/,
@@ -13,6 +14,6 @@ module.exports = {
             },
             "sass-loader"
         ],
-        publicPath: '../'
+        publicPath
     })
 };

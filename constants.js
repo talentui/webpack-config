@@ -1,5 +1,6 @@
 module.exports = {
     strProd: "production",
     strDev: "development",
-    strTest: "test"
+    strTest: "test",
+    extractStylePublicPath: '../'
 };
