@@ -2,7 +2,8 @@ const {
     targetBrowsers,
     targets,
     transformInclude,
-    transformExclude
+    transformExclude,
+    buildProd
 } = global["talent-ui-runtime"];
 
 module.exports = {
@@ -12,7 +13,7 @@ module.exports = {
     options: Object.assign(
         {
             babelrc: false,
-            cacheDirectory: true
+            cacheDirectory: !buildProd
         },
         require("../helpers/get-babel-config.js")({
             targetBrowsers,
