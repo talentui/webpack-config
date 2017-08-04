@@ -1,9 +1,9 @@
 const extMap = {
-    react: "jsx",
-    vue: "vue"
+    react: ".jsx",
+    vue: ".vue"
 };
 
-const baseExt = ["js", "json"];
+const baseExt = [".js", ".json"];
 
 module.exports = engines => {
     return baseExt.concat(

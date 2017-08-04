@@ -69,7 +69,7 @@ module.exports = (options = {}) => {
             extensions: require("./helpers/generate-ext.js")(
                 projectRuntime.engines
             ),
-            modules: options.moduleDirectories || [srcDir, "./node_modules"],
+            modules: options.moduleDirectories || [srcDir, "node_modules"],
             alias: Object.assign(
                 {
                     "&": srcDir
