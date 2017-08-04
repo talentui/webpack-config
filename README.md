@@ -60,7 +60,8 @@
 
         //Array<string> 对js进行babel转换时需要包含或者不包含的我，支持 BabelPlugins和env的一些内置方法 你可以看这里 https://github.com/babel/babel-preset-env#include
         'transformInclude': [],
-        'transformExclude': []
+        'transformExclude': [],
+        'engines': ['react' ,'vue'] //可选参数不传默认为['react'], 可以是react或者vue中的一个或者多个。
     })
 ```
 
@@ -144,6 +145,12 @@ talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配�
 * [talent-ui-dll-webpack-config](https://www.npmjs.com/package/@beisen/talent-ui-dll-webpack-config)
 
 ## 更新
+
+### 8月4号
+
+> 添加对vue项目的支持, 
+
+> 添加参数 engines, 用来标识项目对框架的支持，可以是react, vue的一个或者多个
 
 ### 7月13号
 

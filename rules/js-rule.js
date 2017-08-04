@@ -3,11 +3,12 @@ const {
     targets,
     transformInclude,
     transformExclude,
-    buildProd
+    buildProd,
+    engines
 } = global["talent-ui-runtime"];
 
 module.exports = {
-    test: /\.(js)$/,
+    test: /\.(jsx?)$/,
     exclude: /node_modules\/(?!@beisen\/talent-ui)/, //本正则由张跃同学提供
     loader: "babel-loader",
     options: Object.assign(
@@ -19,7 +20,8 @@ module.exports = {
             targetBrowsers,
             targets,
             transformInclude,
-            transformExclude
+            transformExclude,
+            engines
         })
     )
 };

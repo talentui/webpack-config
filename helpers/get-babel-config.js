@@ -4,7 +4,8 @@ module.exports = function(options = {}) {
         targetBrowsers,
         targets: tgt,
         transformInclude = [],
-        transformExclude = []
+        transformExclude = [],
+        engines
     } = options;
 
     const env = process.env.NODE_ENV || envConst.strDev;
@@ -31,22 +32,25 @@ module.exports = function(options = {}) {
             includeFeature
         );
 
-    return {
-        presets: [
-            [
-                "env",
-                {
-                    targets,
-                    modules: env === envConst.strTest ? 'commonjs' : false,
-                    include: includeFeature,
-                    exclude: transformExclude,
-                    useBuiltIns: true,
-                    debug: env === envConst.strDev
-                }
-            ],
-            "stage-0",
-            "react"
+    var presets = [
+        [
+            "env",
+            {
+                targets,
+                modules: env === envConst.strTest ? "commonjs" : false,
+                include: includeFeature,
+                exclude: transformExclude,
+                useBuiltIns: true,
+                debug: env === envConst.strDev
+            }
         ],
+        "stage-0",
+    ];
+
+    if(engines.indexOf('react') !== -1) presets.push('react');
+
+    return {
+        presets,
         plugins: ["syntax-dynamic-import", "transform-decorators-legacy"]
     };
 };

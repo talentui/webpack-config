@@ -16,7 +16,7 @@ const buildProd = process.env.NODE_ENV === strProd;
  * transofrmExclude:
  * port
  * host
- * 
+ * engines: ['react'] default
  */
 
 module.exports = (options = {}) => {
@@ -41,7 +41,8 @@ module.exports = (options = {}) => {
         transformInclude: options.transformInclude || [],
         transformExclude: options.transformExclude || [],
         port: options.port || 3000,
-        host: options.host || "127.0.0.1"
+        host: options.host || "127.0.0.1",
+        engines: options.engines || ["react"]
     });
     projectRuntime.dllList = require("./helpers/parse-dll")(options.dllList);
 
@@ -65,10 +66,10 @@ module.exports = (options = {}) => {
         },
         plugins: require("./plugins"),
         resolve: {
-            modules: options.moduleDirectories || [
-                srcDir,
-                path.resolve(appRoot, "./node_modules")
-            ],
+            extensions: require("./helpers/generate-ext.js")(
+                projectRuntime.engines
+            ),
+            modules: options.moduleDirectories || [srcDir, "./node_modules"],
             alias: Object.assign(
                 {
                     "&": srcDir
