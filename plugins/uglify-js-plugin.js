@@ -1,7 +1,9 @@
-module.exports = new (require('webpack').optimize.UglifyJsPlugin)({
+module.exports = new (require("webpack")).optimize.UglifyJsPlugin({
     compress: {
-        warnings: false
+        warnings: false,
+        screw_ie8: false
     },
-    sourceMap: true,
-    minimize: true
+    mangle: { screw_ie8: false },
+    output: { screw_ie8: false },
+    sourceMap: true
 });
