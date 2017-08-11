@@ -1,14 +1,14 @@
 const extMap = {
-    react: ".jsx",
+    react: [".jsx", ".tsx"],
     vue: ".vue"
 };
 
-const baseExt = [".js", ".json"];
+const baseExt = [".js", ".ts", ".json"];
 
 module.exports = engines => {
-    return baseExt.concat(
-        engines.map(item => {
-            return extMap[item];
-        })
-    );
+    var exts = [...baseExt];
+    engines.forEach(item => {
+        exts = exts.concat(extMap[item]);
+    });
+    return exts;
 };
