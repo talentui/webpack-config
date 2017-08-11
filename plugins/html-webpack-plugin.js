@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { hostPage } = global["talent-ui-runtime"];
+const { globalObjectKey } = require("../constants.js");
+const { hostPage } = global[globalObjectKey];
 
 module.exports = new HtmlWebpackPlugin({
     template: hostPage || path.resolve(__dirname, "../index.html"),

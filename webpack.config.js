@@ -1,5 +1,5 @@
 const path = require("path");
-const { strProd } = require("./constants.js");
+const { strProd,globalObjectKey } = require("./constants.js");
 const buildProd = process.env.NODE_ENV === strProd;
 
 /**
@@ -24,7 +24,7 @@ module.exports = (options = {}) => {
     // const ASSET_PATH = process.env.asset_path || "";
     const srcDir = path.resolve(appRoot, "./src");
     //使用全部变量保存配置项，给loaders和plugins使用
-    let projectRuntime = (global["talent-ui-runtime"] = {
+    let projectRuntime = (global[globalObjectKey] = {
         devServer: process.env.dev_server === "on",
         analysis: process.env.analysis === "on",
         friendly: process.env.friendly !== "off",

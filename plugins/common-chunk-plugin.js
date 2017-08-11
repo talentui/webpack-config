@@ -1,4 +1,5 @@
-var {buildProd} = global['talent-ui-runtime'];
+const { globalObjectKey } = require("../constants.js");
+var {buildProd} = global[globalObjectKey];
 
 module.exports = new (require("webpack").optimize.CommonsChunkPlugin)({
     names: ["common", "webpack-bootstrap"],

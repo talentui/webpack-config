@@ -1,5 +1,6 @@
 const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
-var { dllList } = global["talent-ui-runtime"];
+const { globalObjectKey } = require("../constants.js");
+var { dllList } = global[globalObjectKey];
 
 module.exports = dllList.map(dll => {
     return new AddAssetHtmlPlugin({

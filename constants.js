@@ -2,5 +2,6 @@ module.exports = {
     strProd: "production",
     strDev: "development",
     strTest: "test",
-    extractStylePublicPath: '../'
+    extractStylePublicPath: '../',
+    globalObjectKey: 'talent-ui-runtime'
 };

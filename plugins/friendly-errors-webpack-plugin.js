@@ -1,5 +1,6 @@
+const { globalObjectKey } = require("../constants.js");
 const { port, host, analysis, publicPath, appRoot, buildProd } = global[
-    "talent-ui-runtime"
+    globalObjectKey
 ];
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 

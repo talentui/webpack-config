@@ -1,5 +1,6 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const { buildProd } = global["talent-ui-runtime"];
+const { globalObjectKey } = require("../constants.js");
+const { buildProd } = global[globalObjectKey];
 
 module.exports = new ExtractTextPlugin({
     filename: buildProd ? "css/[name]-[hash].min.css" : "css/[name].css",

@@ -146,6 +146,13 @@ talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配�
 
 ## 更新
 
+### 8月 11号
+
+> 添加对typescript的打包支持，
+
+> 添加typescript基础配置
+
+
 ### 8月4号
 
 > 添加对vue项目的支持, 

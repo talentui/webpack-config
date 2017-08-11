@@ -1,7 +1,7 @@
 const path = require("path");
-var { strProd, strDev } = require("../constants.js");
+var { strProd, strDev, globalObjectKey } = require("../constants.js");
 var { devServer, buildProd, useCommonChunk, analysis, friendly } = global[
-    "talent-ui-runtime"
+    globalObjectKey
 ];
 
 const plugins = [
