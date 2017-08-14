@@ -5,7 +5,7 @@ module.exports = function(options = {}) {
         targets: tgt,
         transformInclude = [],
         transformExclude = [],
-        engines = ["react"]
+        engines = envConst.defaultEngines
     } = options;
 
     const env = process.env.NODE_ENV || envConst.strDev;

@@ -1,5 +1,5 @@
 const path = require("path");
-const { strProd } = require("./constants.js");
+const { strProd, defaultEngines } = require("./constants.js");
 const buildProd = process.env.NODE_ENV === strProd;
 
 /**
@@ -42,7 +42,7 @@ module.exports = (options = {}) => {
         transformExclude: options.transformExclude || [],
         port: options.port || 3000,
         host: options.host || "127.0.0.1",
-        engines: options.engines
+        engines: options.engines || defaultEngines
     });
     projectRuntime.dllList = require("./helpers/parse-dll")(options.dllList);
 
