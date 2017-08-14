@@ -42,7 +42,7 @@ module.exports = (options = {}) => {
         transformExclude: options.transformExclude || [],
         port: options.port || 3000,
         host: options.host || "127.0.0.1",
-        engines: options.engines || ["react"]
+        engines: options.engines
     });
     projectRuntime.dllList = require("./helpers/parse-dll")(options.dllList);
 
