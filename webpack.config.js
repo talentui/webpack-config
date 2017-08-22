@@ -1,5 +1,6 @@
 const path = require("path");
-const { strProd,globalObjectKey } = require("./constants.js");
+const fs = require("fs");
+const { strProd, globalObjectKey } = require("./constants.js");
 const buildProd = process.env.NODE_ENV === strProd;
 
 /**
@@ -17,12 +18,14 @@ const buildProd = process.env.NODE_ENV === strProd;
  * port
  * host
  * engines: ['react'] default
+ * moduleScope: 默认为src, 可以通过moduleScope来指明另外的目录，如果想使用根目录，请设置 ".", 如果设置了此scope，所有的相对模板只能从此目录下导入。
  */
 
 module.exports = (options = {}) => {
-    const appRoot = options.root || path.resolve(__dirname, "../../");
+    const appRoot = fs.realpathSync(process.cwd());
     // const ASSET_PATH = process.env.asset_path || "";
-    const srcDir = path.resolve(appRoot, "./src");
+    const {moduleScope} = options;
+    const srcDir = path.resolve(appRoot, moduleScope || "./src");
     //使用全部变量保存配置项，给loaders和plugins使用
     let projectRuntime = (global[globalObjectKey] = {
         devServer: process.env.dev_server === "on",
@@ -59,23 +62,25 @@ module.exports = (options = {}) => {
                 ? "[name]-[chunkhash].chunk.min.js"
                 : "[name].chunk.js",
             path: path.resolve(appRoot, "dist/"),
-            publicPath: projectRuntime.publicPath
+            publicPath: projectRuntime.publicPath,
+            pathinfo: !buildProd
         },
         module: {
+            // makes missing exports an error instead of warning
+            strictExportPresence: true,
             rules: require("./rules")
         },
         plugins: require("./plugins"),
         resolve: {
-            extensions: require("./helpers/generate-ext.js")(
-                projectRuntime.engines
-            ),
+            extensions: [".ts", ".tsx", ".js", ".json", ".jsx"],
             modules: options.moduleDirectories || ["node_modules"],
             alias: Object.assign(
                 {
                     "&": srcDir
                 },
                 options.alias
-            )
+            ),
+            plugins: require('./helpers/get-resolve-plugins')(moduleScope, srcDir)
         },
         devServer: {
             port: projectRuntime.port,

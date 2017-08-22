@@ -6,6 +6,7 @@ var { devServer, buildProd, useCommonChunk, analysis, friendly } = global[
 
 const plugins = [
     // require("./module-concatenation-plugin"),
+    require('./case-sensitive-path-plugin'),
     require("./define-plugin"),
     ...require("./dll-reference-plugin"),
 

@@ -146,6 +146,18 @@ talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配�
 
 ## 更新
 
+### 8 22 号
+
+> 添加moduleScope参数，默认为src, 会影响到默认的alias, 和模块导入，如果设置了moduleScope, 测不能从指定目录外的目录导入相对模块
+
+> 取消根据engines来修改extensions的方式，感觉多余
+
+> 考虑到我们都是在项目中启动node工具的，所以root参数不再需要了，
+
+> 打开strictExportPresence, 如果导入没有对应的导出，就会报错
+
+> 开发打包打开了output.pathinfo为true
+
 ### 8月 11号
 
 > 添加对typescript的打包支持，
