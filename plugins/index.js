@@ -21,6 +21,8 @@ if (devServer) {
         require("./html-webpack-plugin")
     );
     plugins = plugins.concat(require("./add-asset-html-plugin"));
+} else {
+    plugins.push(require("./extract-text-plugin"));
 }
 
 if (friendly && devServer)
@@ -30,7 +32,6 @@ if (useCommonChunk) plugins.push(require("./common-chunk-plugin"));
 
 if (buildProd) {
     plugins.push(
-        require("./extract-text-plugin"),
         require("./uglify-js-plugin")
     );
 }

@@ -1,3 +1,6 @@
+## 2.0.3
+
+* 修复bug, 在非devserver模式下，引入extract plugin
 
 ## 2.0.2
 
