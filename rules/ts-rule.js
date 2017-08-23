@@ -1,3 +1,4 @@
+const {globalObjectKey} = require('../constants')
 const { moduleScope } = global[globalObjectKey];
 
 module.exports = {

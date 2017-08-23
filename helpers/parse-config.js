@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 module.exports = options => {
     const appRoot = fs.realpathSync(process.cwd());
     var config = {
@@ -42,5 +44,5 @@ module.exports = options => {
         // js ts mixed //使用开发语言，js或者ts，或者混着用
         language: options.language || "js" 
     };
-    config.dllList = require("./helpers/parse-dll")(options.dllList);
+    return config;
 };

@@ -21,12 +21,24 @@ const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
  * moduleScope: 默认为'.', 可以通过moduleScope来指明另外的目录，如果想使用根目录，请设置 ".", 如果设置了此scope，所有的相对模板只能从此目录下导入。
  */
 module.exports = (options = {}) => {
-    const appRoot = fs.realpathSync(process.cwd());
     // const ASSET_PATH = process.env.asset_path || "";
     //使用全部变量保存配置项，给loaders和plugins使用
-    let { buildProd, publicPath, port, host, friendly, moduleScope } = (global[
-        globalObjectKey
-    ] = require("./helpers/parse-config")(options));
+    let {
+        buildProd,
+        publicPath,
+        port,
+        host,
+        friendly,
+        moduleScope,
+        appRoot
+    } = (global[globalObjectKey] = o = require("./helpers/parse-config")(
+        options
+    ));
+
+    o.dllList = require("./helpers/parse-dll")(
+        options.dllList
+    );
+
     let entry = require("./helpers/parse-entry")(options.entry);
     return {
         context: appRoot,
