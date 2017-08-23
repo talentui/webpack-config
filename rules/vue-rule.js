@@ -1,5 +1,6 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var { buildProd } = global["talent-ui-runtime"];
+const { globalObjectKey } = require("../constants.js");
+var { buildProd } = global[globalObjectKey];
 const vueStyleLoader = 'vue-style-loader';
 
 

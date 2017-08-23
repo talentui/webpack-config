@@ -1,32 +1,40 @@
 const path = require("path");
-var { strProd, strDev } = require("../constants.js");
+var { strProd, strDev, globalObjectKey } = require("../constants.js");
 var { devServer, buildProd, useCommonChunk, analysis, friendly } = global[
-    "talent-ui-runtime"
+    globalObjectKey
 ];
 
-const plugins = [
-    // require("./module-concatenation-plugin"),
-    require("./define-plugin"),
-    ...require("./dll-reference-plugin"),
+const enableCheck = process.env.check === "on";
 
-    ...(devServer
-        ? [
-              require("./hot-module-replacement-plugin"),
-              //   require("./named-modules-plugin"),
-              require("./html-webpack-plugin"),
-              ...require("./add-asset-html-plugin")
-          ]
-        : []),
-    require("./extract-text-plugin")
-];
+var plugins = [];
 
-if (friendly && devServer) plugins.push(require("./friendly-errors-webpack-plugin"));
+//启用路径检查，因为在mac的文件系统下，不区分大小写
+if (enableCheck) plugins.push(require("./case-sensitive-path-plugin"));
+
+plugins.push(require("./define-plugin"));
+
+plugins = plugins.concat(require("./dll-reference-plugin"));
+
+if (devServer) {
+    plugins.push(
+        require("./hot-module-replacement-plugin"),
+        require("./html-webpack-plugin")
+    );
+    plugins = plugins.concat(require("./add-asset-html-plugin"));
+}
+
+if (friendly && devServer)
+    plugins.push(require("./friendly-errors-webpack-plugin"));
 
 if (useCommonChunk) plugins.push(require("./common-chunk-plugin"));
 
 if (buildProd) {
-    plugins.push(require("./uglify-js-plugin"));
+    plugins.push(
+        require("./extract-text-plugin"),
+        require("./uglify-js-plugin")
+    );
 }
+
 if (analysis) {
     plugins.push(require("./bundle-analyzer-plugin"));
 }

@@ -146,6 +146,37 @@ talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配�
 
 ## 更新
 
+### 8 月 23 
+
+> 添加useLint 参数，默认为false, 使用的话，会启用对应的tslint和eslint
+
+> 默认moduleScope为应用根目录，并且强制不允许引用scope目录之外的相对模块
+
+> 为了提升构建速度，把src目录从模块查找目录排除，并且不允许添加新的模块目录，如果要简化模块查找，请使用alias.
+
+> 添加language参数， 默认为js, 可选ts, 或者mixed. 根据类型的不同选择不同的loader
+
+### 8 22 号
+
+> 添加case sensitivePlugin
+
+> 添加moduleScope参数，默认为src, 会影响到默认的alias, 和模块导入，如果设置了moduleScope, 测不能从指定目录外的目录导入相对模块
+
+> 取消根据engines来修改extensions的方式，感觉多余
+
+> 考虑到我们都是在项目中启动node工具的，所以root参数不再需要了，
+
+> 打开strictExportPresence, 如果导入没有对应的导出，就会报错
+
+> 开发打包打开了output.pathinfo为true
+
+### 8月 11号
+
+> 添加对typescript的打包支持，
+
+> 添加typescript基础配置
+
+
 ### 8月4号
 
 > 添加对vue项目的支持, 

@@ -1,5 +1,6 @@
 const webpack = require("webpack");
-const {buildProd} = global['talent-ui-runtime'];
+const { globalObjectKey } = require("../constants.js");
+const {buildProd} = global[globalObjectKey];
 const {strDev, strProd} = require('../constants.js');
 
 module.exports = new webpack.DefinePlugin({
