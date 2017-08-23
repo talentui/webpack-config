@@ -61,7 +61,7 @@ module.exports = (options = {}) => {
         },
         plugins: require("./plugins"),
         resolve: {
-            extensions: [".ts", ".tsx", ".js", ".json", ".jsx",".vue"],
+            extensions: require('./helers/get-resolve-extensions'),
             // modules:  ["node_modules"],
             alias: Object.assign(
                 {
