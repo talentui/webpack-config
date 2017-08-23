@@ -1,7 +1,8 @@
 const { moduleScope } = global[globalObjectKey];
 
 module.exports = {
-    test: /\.tsx?$/,
-    loader: "ts-loader",
+    test: /\.(ts|tsx)$/,
+    loader: require.resolve('tslint-loader'),
+    enforce: 'pre',
     include: moduleScope
-};
+  }

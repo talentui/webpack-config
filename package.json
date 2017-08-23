@@ -24,7 +24,6 @@
   "dependencies": {
     "@beisen/talent-ui-dll-naming-convention": "^1.0.1",
     "add-asset-html-webpack-plugin": "^2.0.1",
-    "awesome-typescript-loader": "^3.2.2",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
@@ -43,6 +42,8 @@
     "react-dev-utils": "^3.1.1",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.2",
+    "ts-loader": "^2.3.3",
+    "tslint-loader": "^3.5.3",
     "vue-loader": "^13.0.2",
     "vue-style-loader": "^3.0.1",
     "webpack-bundle-analyzer": "^2.8.2"
