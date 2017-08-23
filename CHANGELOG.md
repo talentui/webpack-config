@@ -1,3 +1,8 @@
+
+## 2.0.2
+
+### file loader在执行prod打包的时候，给资源文件加hash
+
 ## 2.0.1
 
 ### 3个bug fix
