@@ -1,3 +1,7 @@
+## 2.0.1
+
+### 3个bug fix
+
 ## webpack-config2.0 
 
 ### 参数变化

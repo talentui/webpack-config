@@ -61,7 +61,7 @@ module.exports = (options = {}) => {
         },
         plugins: require("./plugins"),
         resolve: {
-            extensions: require('./helers/get-resolve-extensions'),
+            extensions: require('./helpers/get-resolve-extensions'),
             // modules:  ["node_modules"],
             alias: Object.assign(
                 {
