@@ -61,7 +61,7 @@ module.exports = (options = {}) => {
         },
         plugins: require("./plugins"),
         resolve: {
-            extensions: [".ts", ".tsx", ".js", ".json", ".jsx"],
+            extensions: [".ts", ".tsx", ".js", ".json", ".jsx",".vue"],
             // modules:  ["node_modules"],
             alias: Object.assign(
                 {
