@@ -1,3 +1,11 @@
+## 2.0.4
+
+* 使用awesome-typescript-loader代替ts-loader
+
+* 添加tsbase.json, 做了一些基础ts配置，可以在项目中继承
+
+
+
 ## 2.0.3
 
 * 修复bug, 在非devserver模式下，引入extract plugin

@@ -1,8 +1,19 @@
+const path = require('path');
 const {globalObjectKey} = require('../constants')
-const { moduleScope } = global[globalObjectKey];
+const { moduleScope, buildProd } = global[globalObjectKey];
+const babelConfig = require("../helpers/babel-config.js");
 
 module.exports = {
     test: /\.tsx?$/,
-    loader: "ts-loader",
-    include: moduleScope
+    include: moduleScope,
+    loader: "awesome-typescript-loader",
+    // loader: "ts-loader",
+    options: {
+        useBabel: true,
+        babelOptions: {
+            presets: babelConfig.presets,
+            plugins: babelConfig.plugins
+        },
+        useCache: !buildProd,
+    }
 };
