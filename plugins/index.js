@@ -12,7 +12,7 @@ var plugins = [];
 if (enableCheck) plugins.push(require("./case-sensitive-path-plugin"));
 
 
-plugins.push(require(require('./module-concatenation-plugin'), "./define-plugin"));
+plugins.push(require('./module-concatenation-plugin'), require("./define-plugin"));
 
 plugins = plugins.concat(require("./dll-reference-plugin"));
 
