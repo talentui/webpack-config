@@ -1,5 +1,6 @@
 const {
     globalObjectKey,
+    languageJs,
     languageTs,
     languageMixed
 } = require("../constants");
@@ -13,17 +14,21 @@ const react = "react";
 
 let { engines, language } = global[globalObjectKey];
 
-let exts = [js];
+let exts = [];
 
 let useTs = language === languageTs || language === languageMixed;
 
+let useJS = language === languageJs || language === languageMixed;
+
 let supportJSX = engines.indexOf(react) !== -1;
 
-if(useTs) exts.push(ts);
+if (useJS) exts.push(js);
 
-if(supportJSX){
-    exts.push(jsx);
-    if(useTs) exts.push(tsx);
+if (useTs) exts.push(ts);
+
+if (supportJSX) {
+    if (useJS) exts.push(jsx);
+    if (useTs) exts.push(tsx);
 }
 
 if (engines.indexOf("vue") !== -1) exts.push(vue);

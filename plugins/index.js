@@ -11,7 +11,8 @@ var plugins = [];
 //启用路径检查，因为在mac的文件系统下，不区分大小写
 if (enableCheck) plugins.push(require("./case-sensitive-path-plugin"));
 
-plugins.push(require("./define-plugin"));
+
+plugins.push(require(require('./module-concatenation-plugin'), "./define-plugin"));
 
 plugins = plugins.concat(require("./dll-reference-plugin"));
 
