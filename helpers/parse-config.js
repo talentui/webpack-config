@@ -20,6 +20,15 @@ module.exports = options => {
     //从环境变量中取配置
     let { analysis, friendly, asset_path, dev_server } = process.env;
 
+    if(!dev_server){
+        // 尝试通过启动模块来判断是不是使用了webpack-dev-server
+        const {mainModule} = process;
+        const reg = /webpack-dev-server\.js/
+        if(reg.test(mainModule.filename)){
+            dev_server = switchOn
+        }
+    }
+
     var config = {
         // 是否启用analysis
         analysis: analysis === switchOn,
@@ -45,7 +54,7 @@ module.exports = options => {
         //自定义承载页
         hostPage: options.hostPage,
         //是否启用代码检查
-        useLint: options.useLint === undefined ? true : !!options.useLint,
+        useLint: options.useLint === undefined ? false : !!options.useLint,
         // env的浏览器配置
         targetBrowsers: options.targetBrowsers,
         //env的目标配置

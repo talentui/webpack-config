@@ -50,7 +50,7 @@
         //removed from 2.0 'moduleDirectories': [path.resolve(appRoot, './src'), 'node_modules' ]
 
         // 设置模块的scope，默认为项目根目录，设置为"./src", 代表设置模块只能在项目根目录下的src目录范围内使用相对路径查找模块
-        "moduleScope": "./src"
+        "moduleScope": "."
         // 设置别名，自己想像能干些什么吧。默认值为{"&": moduleScope} 
         'alias': {
             "react": 'preact'
@@ -64,8 +64,9 @@
         'transformExclude': [],
         'engines': ['react' ,'vue'] //可选参数不传默认为['react'], 可以是react或者vue中的一个或者多个。
         // 设置程序使用的语言，支持ts(typescript), js(typescript), mixed(typescript 和 javascript)。这会影响到项目支持的扩展名和使用的loader
-        'language': "js" 
-        
+        'language': "js",
+        // 在构建时是否启用lint检查，默认为false，为true时需要提供相应的.eslintrc和.tslintrc文件
+        'useLint': false
     })
 ```
 
