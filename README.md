@@ -130,7 +130,7 @@
 talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配置，会影响到这些配置的环境变量有。
 > `asset_path`: 这个变量会影响到你构建代码时所设置的[publicPath](https://webpack.js.org/configuration/output/#output-publicpath), 因为在生产环境下我们使用了extractTextPlugin来拆分样式代码，所以运行时更改publicPath不太现实，所以我们只能为不同的环境构建不同的结果。
 
-> `dev_server=on` 如果设置这个的话就会启动webpack dev server, 并且加载htmlwebpackpulugin和addassethtmlplugin等插件。
+> `dev_server=on` 通过webpack config生成webpack配置对象的时候，很难直接通过环境信息来确定是否启动了dev server, 通过观察process中的数据，发现通过process.mainModule来判断是否是通过webpack-dev-server做为启动模块，普通情况下是可靠的。如果你使用了其他的启动方式，这个时候你需要传递这个环境变量，明确告诉应用启动了webpack-dev-server. 并且加载dev-server模式下需要的配置和插件，如htmlwebpackpulugin和addassethtmlplugin等插件。
 
 > `analyzer_server=on` 如果设置这个的话就会启动webpack bundle analyzer, 提供一个可视化的图表。如图：
 <img src="https://raw.githubusercontent.com/imlgm/tupian/master/2017/analyzer.png" style="width:600px" />
@@ -154,6 +154,9 @@ talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配�
 * [talent-ui-dll-webpack-config](https://www.npmjs.com/package/@beisen/talent-ui-dll-webpack-config)
 
 ## 更新
+
+### 更新 9月 21号
+> dev_server环境变量在正常情况下可以不传，程序会根据process.mainModule来判断是否启动了webpack-dev-server, 如果开发者通过其他方式启动了导致无法识别，可以通过传递此环境变量来明确启动了dev_server
 
 ### 8 月 23 
 
