@@ -1,6 +1,5 @@
 const namingConvention = require("@beisen/talent-ui-dll-naming-convention");
-const { globalObjectKey } = require("../constants.js");
-const { appRoot, buildProd } = global[globalObjectKey];
+const { buildProd, appRoot } = require("../constants.js");
 
 module.exports = (dllList = []) => {
     return dllList.map(dll => {

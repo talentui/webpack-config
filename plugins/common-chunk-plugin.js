@@ -1,5 +1,4 @@
-const { globalObjectKey } = require("../constants.js");
-var {buildProd} = global[globalObjectKey];
+const { buildProd } = require("../constants.js");
 
 module.exports = new (require("webpack").optimize.CommonsChunkPlugin)({
     names: ["common", "webpack-bootstrap"],

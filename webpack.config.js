@@ -1,6 +1,5 @@
 const path = require("path");
 const fs = require("fs");
-const { globalObjectKey } = require("./constants.js");
 const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
 
 /**
@@ -23,26 +22,22 @@ const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
 module.exports = (options = {}) => {
     // const ASSET_PATH = process.env.asset_path || "";
     //使用全部变量保存配置项，给loaders和plugins使用
+    const { globalObjectKey, appRoot, buildProd } = require("./constants.js");
+
     let {
-        buildProd,
         publicPath,
         port,
         host,
         friendly,
         moduleScope,
-        appRoot
+        dllList,
     } = (global[globalObjectKey] = o = require("./helpers/parse-config")(
         options
     ));
 
-    o.dllList = require("./helpers/parse-dll")(
-        options.dllList
-    );
-
-    let entry = require("./helpers/parse-entry")(options.entry);
     return {
-        context: appRoot,
-        entry,
+        context: moduleScope,
+        entry: o.entry,
         output: {
             filename: buildProd
                 ? "[name]-[chunkhash].chunk.min.js"
@@ -63,12 +58,7 @@ module.exports = (options = {}) => {
         resolve: {
             extensions: require('./helpers/get-resolve-extensions'),
             // modules:  ["node_modules"],
-            alias: Object.assign(
-                {
-                    "&": moduleScope
-                },
-                options.alias
-            ),
+            alias: o.alias,
             plugins: [new ModuleScopePlugin(moduleScope)]
         },
         devServer: {

@@ -1,6 +1,5 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const { extractStylePublicPath: publicPath, globalObjectKey } = require("../constants.js");
-const { buildProd } = global[globalObjectKey];
+const { extractStylePublicPath: publicPath, globalObjectKey, buildProd } = require("../constants.js");
 
 module.exports = {
     test: /\.css$/,

@@ -8,8 +8,9 @@
   },
   "scripts": {
     "data": "node ./data/generate-config-data.js",
-    "prepublish": "yarn run data",
-    "p": "npm publish --tag beta"
+    "prepublish": "yarn data && yarn test",
+    "p": "npm publish --tag beta",
+    "test": "jest"
   },
   "maintainers": [
     {
@@ -57,6 +58,7 @@
   },
   "devDependencies": {
     "eslint": "^4.5.0",
+    "jest": "^21.1.0",
     "tslint": "^5.6.0",
     "webpack": "^3.5.6",
     "webpack-dev-server": "^2.7.1"

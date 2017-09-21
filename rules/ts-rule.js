@@ -1,6 +1,6 @@
 const path = require('path');
-const {globalObjectKey} = require('../constants')
-const { moduleScope, buildProd } = global[globalObjectKey];
+const {globalObjectKey, buildProd} = require('../constants')
+const { moduleScope } = global[globalObjectKey];
 const babelConfig = require("../helpers/babel-config.js");
 
 module.exports = {

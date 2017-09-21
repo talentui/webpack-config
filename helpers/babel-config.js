@@ -1,11 +1,10 @@
-const { globalObjectKey } = require("../constants.js");
+const { globalObjectKey, buildProd } = require("../constants.js");
 
 const {
     targetBrowsers,
     targets,
     transformInclude,
     transformExclude,
-    buildProd,
     engines
 } = global[globalObjectKey];
 

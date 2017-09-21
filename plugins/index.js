@@ -1,6 +1,6 @@
 const path = require("path");
-var { strProd, strDev, globalObjectKey } = require("../constants.js");
-var { devServer, buildProd, useCommonChunk, analysis, friendly } = global[
+var { strProd, strDev, globalObjectKey, buildProd } = require("../constants.js");
+var { devServer, useCommonChunk, analysis, friendly } = global[
     globalObjectKey
 ];
 

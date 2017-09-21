@@ -25,7 +25,6 @@
 
         //devServer的host
         'host': "127.0.0.1", 
-
         /*
             dll列表，在你的应用中可以通过引入dll的方式引入一些共用的代码, 
             支持字符串和{file, manifest}格式的对象
@@ -41,16 +40,18 @@
         'hostPage': path.resolve(__dirname, '../index.html')
 
         // Array<string> | string 浏览器支持列表, 这个会影响你代码打包的速度和文件体积，支持的越新越好
-        // browsers: ["> 1%", "chrome >= 57"], removed from 2017.6.27 replacedBy targetBrowsers, 详情请查看浏览器列表 https://github.com/ai/browserslist
+        // replaced by tragetBrwosers: browsers: ["> 1%", "chrome >= 57"], removed from 2017.6.27 replacedBy targetBrowsers, 详情请查看浏览器列表 https://github.com/ai/browserslist
         // 如果不配置以下这两个选项，默认就是chrome > 55
         'targetBrowsers': "chrome >= 55",
         //Object, 使用targets配置会覆盖targetBrowsers, 当你需要更明确的配置的时候，可以使用此配置项，配置方式请查看文档 https://github.com/babel/babel-preset-env#targets
         'targets': {},
         
         //模块查找目录
-        'moduleDirectories': [path.resolve(appRoot, './src'), 'node_modules' ]
+        //removed from 2.0 'moduleDirectories': [path.resolve(appRoot, './src'), 'node_modules' ]
 
-        // 设置别名，自己想像能干些什么吧。
+        // 设置模块的scope，默认为项目根目录，设置为"./src", 代表设置模块只能在项目根目录下的src目录范围内使用相对路径查找模块
+        "moduleScope": "./src"
+        // 设置别名，自己想像能干些什么吧。默认值为{"&": moduleScope} 
         'alias': {
             "react": 'preact'
         },
@@ -62,6 +63,9 @@
         'transformInclude': [],
         'transformExclude': [],
         'engines': ['react' ,'vue'] //可选参数不传默认为['react'], 可以是react或者vue中的一个或者多个。
+        // 设置程序使用的语言，支持ts(typescript), js(typescript), mixed(typescript 和 javascript)。这会影响到项目支持的扩展名和使用的loader
+        'language': "js" 
+        
     })
 ```
 
@@ -131,6 +135,10 @@ talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配�
 <img src="https://raw.githubusercontent.com/imlgm/tupian/master/2017/analyzer.png" style="width:600px" />
 
 > NODE_ENV=production 会启动生产环境的打包
+
+> `friendly=off` 项目默认引入了friendly-error-plugins，因为这样会影响终端的输出，你如果想看到全部的输出，可以设置这个环境变量
+
+> `check=on` 受文件系统的影响，在mac下进行开发，`import './Index.js'` 和 `import './index.js'` 是等价，但在linux文件系统下，却会报错，如果你的项目在linux下运行报错，可以使用这个环境变量打开 `case-sensitive-webpack-plugin`, 这样会对模块的大小写进行检查，如果导入的路径大小写不对，就会报错。为什么不始终打开呢？首先，这样的错误不是频繁出现的，linux下打开也没啥用，其次，减少项目引入的plugins的数量，尽可能的提升打包的速度。
 
 
 ### 关于webpack中对dll的使用请参看[DllPLugin](https://webpack.js.org/plugins/dll-plugin/)

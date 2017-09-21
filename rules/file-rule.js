@@ -1,5 +1,4 @@
-const {globalObjectKey} = require('../constants')
-const { buildProd } = global[globalObjectKey];
+const {buildProd} = require('../constants')
 
 module.exports = {
     test: /\.(png|jpg|gif|ttf|eot|svg|woff(2)?)(\?[^('|")]*)?$/,
