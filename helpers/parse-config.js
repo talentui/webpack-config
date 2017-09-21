@@ -16,6 +16,8 @@ module.exports = options => {
         entry = "./index.js";
     }
     let moduleScope = path.resolve(appRoot, options.moduleScope || ".");
+
+    //从环境变量中取配置
     let { analysis, friendly, asset_path, dev_server } = process.env;
 
     var config = {
