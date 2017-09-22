@@ -1,8 +1,8 @@
-const path = require('path');
+const path = require("path");
 const webpackConfig = require("../webpack.config.js");
+const cwd = process.cwd();
 
 describe("用空参数初始化配置", () => {
-
     let config = webpackConfig();
 
     it("config是一个对象", () => {
@@ -18,29 +18,31 @@ describe("用空参数初始化配置", () => {
     });
     it("alias & 需要指向根目录", () => {
         expect(config.resolve.alias).toEqual({
-            "&": process.cwd()
+            "&": cwd,
+            _: cwd
         });
     });
 });
 
 describe("带参数初始化配置", () => {
-    let rootDir = process.cwd();
     let config = webpackConfig({
         entry: "./entry.js",
-        moduleScope: './src',
+        moduleScope: "./src",
         alias: {
-            "@": "xxxx"
+            "@": "xxxx",
+            _: cwd
         }
     });
 
     it("context需要指向根目录下的src", () => {
-        expect(config.context).toBe(path.resolve(rootDir, "./src"));
+        expect(config.context).toBe(path.resolve(cwd, "./src"));
     });
 
     it("alias得正确的合并", () => {
         expect(config.resolve.alias).toEqual({
-            "&": path.resolve(rootDir,'./src'),
-            "@": "xxxx"
-        })
-    })
+            "&": path.resolve(cwd, "./src"),
+            "@": "xxxx",
+            "_": cwd
+        });
+    });
 });

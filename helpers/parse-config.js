@@ -47,7 +47,8 @@ module.exports = options => {
         //别名：
         alias: Object.assign(
             {
-                "&": moduleScope
+                "_": appRoot,
+                "&": moduleScope,
             },
             options.alias
         ),
