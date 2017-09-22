@@ -53,7 +53,9 @@
         "moduleScope": "."
         // 设置别名，自己想像能干些什么吧。默认值为{"&": moduleScope} 
         'alias': {
-            "react": 'preact'
+            "_": appRoot, //项目根目录
+            "&": moduleScope,
+            
         },
 
         //是否使用commonChunk, 默认为true, 你可以使用这个来禁用commonchunk
