@@ -1,3 +1,7 @@
+### 2.2.2
+
+* 在构建生产环境执行uglify的时候，把console.xxx给干掉，避免IE在执行到的时候报错。
+
 ## 2.0.4
 
 * 使用awesome-typescript-loader代替ts-loader
