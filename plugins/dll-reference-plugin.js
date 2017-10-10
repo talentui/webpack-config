@@ -1,10 +1,6 @@
 const path = require("path");
-const { globalObjectKey, appRoot } = require("../constants.js");
+const { globalObjectKey } = require("../constants.js");
 const { dllList } = global[globalObjectKey];
+const { generateDllReferencePlugins } = require('@beisen/talent-ui-dll-parser-util')
 
-module.exports = dllList.map(dll => {
-    return new (require("webpack").DllReferencePlugin)({
-        manifest: require(dll.manifest),
-        context: appRoot
-    });
-});
+module.exports = generateDllReferencePlugins(dllList);

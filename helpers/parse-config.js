@@ -9,6 +9,7 @@ const {
     switchOn,
     switchOff
 } = require("../constants");
+const { parseDll } = require('@beisen/talent-ui-dll-parser-util')
 module.exports = options => {
     let { entry } = options;
     if (!entry) {
@@ -41,7 +42,7 @@ module.exports = options => {
         // 入口文件
         entry,
         // dll 列表，数组 || undefined
-        dllList: require("./parse-dll")(options.dllList),
+        dllList: parseDll(options.dllList),
         //代码目录
         moduleScope,
         //别名：
