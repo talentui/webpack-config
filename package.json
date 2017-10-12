@@ -19,7 +19,11 @@
     }
   ],
   "repository": {
-    "url": "git@gitlab.beisencorp.com:ux-cnpm/talent-ui-webpack-config.git"
+    "type": "git",
+    "url": "https://github.com/talentui/webpack-config.git"
+  },
+  "engines": {
+    "node": ">=6.0.0"
   },
   "license": "MIT",
   "dependencies": {
