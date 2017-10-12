@@ -2,9 +2,16 @@
 # yarn lockfile v1
 
 
-"@beisen/talent-ui-dll-naming-convention@^1.0.1":
+"@talentui/dll-naming@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@talentui/dll-naming/-/dll-naming-1.0.0.tgz#16033cd9f13f5cb3c20f3b572e7e64c283b8b9b4"
+
+"@talentui/dll-parser@^1.0.1":
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@beisen/talent-ui-dll-naming-convention/-/talent-ui-dll-naming-convention-1.0.1.tgz#a057bd92b753964ddd4aad95e9e1c76ce84670e3"
+  resolved "https://registry.yarnpkg.com/@talentui/dll-parser/-/dll-parser-1.0.1.tgz#016d538d1c4b421b3cee7ccbf753d2451c37d918"
+  dependencies:
+    "@talentui/dll-naming" "^1.0.0"
+    webpack "^3.6.0"
 
 abab@^1.0.3:
   version "1.0.4"

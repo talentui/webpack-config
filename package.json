@@ -1,6 +1,6 @@
 {
-  "name": "@beisen/talent-ui-webpack-config",
-  "version": "2.2.3",
+  "name": "@talentui/webpack-config",
+  "version": "1.0.0",
   "main": "./webpack.config.js",
   "author": {
     "name": "Li Guoming",
@@ -23,7 +23,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@beisen/talent-ui-dll-naming-convention": "^1.0.1",
+    "@talentui/dll-naming": "^1.0.0",
+    "@talentui/dll-parser": "^1.0.1",
     "add-asset-html-webpack-plugin": "^2.0.1",
     "autoprefixer": "^7.1.2",
     "awesome-typescript-loader": "^3.2.3",

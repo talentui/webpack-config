@@ -1,6 +1,4 @@
-const path = require("path");
-const { globalObjectKey } = require("../constants.js");
-const { dllList } = global[globalObjectKey];
-const { generateDllReferencePlugins } = require('@beisen/talent-ui-dll-parser-util')
+const { globalObjectKey, appRoot } = require("../constants.js");
+const { dllParser } = global[globalObjectKey];
 
-module.exports = generateDllReferencePlugins(dllList);
+module.exports = dllParser.getRefPlugin(appRoot)
