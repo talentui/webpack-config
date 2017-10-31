@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
-
+// 1.0.1
 /**
  * @options
  * root： optional 项目的根目录 默认为当前文件所有路径的上上级，最好还是传进来

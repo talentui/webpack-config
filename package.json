@@ -7,7 +7,7 @@
     "email": "liguoming@beisen.com"
   },
   "scripts": {
-    "precm": "jest",
+    "precm": "npm run data && jest",
     "data": "node ./data/generate-config-data.js",
     "test": "jest",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
