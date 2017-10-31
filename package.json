@@ -1,16 +1,19 @@
 {
   "name": "@talentui/webpack-config",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "main": "./webpack.config.js",
   "author": {
     "name": "Li Guoming",
     "email": "liguoming@beisen.com"
   },
   "scripts": {
+    "precm": "jest",
     "data": "node ./data/generate-config-data.js",
     "prepublish": "yarn data && yarn test",
     "p": "npm publish --tag beta",
-    "test": "jest"
+    "test": "jest",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "cm": "git-cz"
   },
   "maintainers": [
     {
@@ -57,13 +60,17 @@
     "style-loader": "^0.18.2",
     "tslint-loader": "^3.5.3",
     "typescript": "^2.4.2",
-    "vue-loader": "^13.0.2",
+    "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
     "webpack-bundle-analyzer": "^2.8.2"
   },
   "devDependencies": {
+    "commitizen": "2.9.6",
+    "cz-conventional-changelog": "2.1.0",
     "eslint": "^4.5.0",
+    "husky": "0.14.3",
     "jest": "^21.1.0",
+    "semantic-release": "^8.2.0",
     "tslint": "^5.6.0",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
@@ -73,5 +80,10 @@
     "tslint": "^5.6.0",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
