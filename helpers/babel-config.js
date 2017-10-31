@@ -13,7 +13,7 @@ module.exports = Object.assign(
         babelrc: false,
         cacheDirectory: !buildProd
     },
-    require("../helpers/get-babel-config.js")({
+    require("@talentui/get-babel-config")({
         targetBrowsers,
         targets,
         transformInclude,
