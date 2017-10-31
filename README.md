@@ -4,16 +4,16 @@
 ## 应用
 
 ```bash
-    yarn add @beisen/talent-ui-webpack-config --dev
+    yarn add @talentui/webpack-config --dev
     //或者
-    npm install @beisen/talent-ui-webpack-config -D
+    npm install @talentui/webpack-config -D
 ```
 
 在你的项目中创建webpack/webpack.config.js
 ```js
     const path = require('path');
 
-    module.exports = require('@beisen/talent-ui-webpack-config')({
+    module.exports = require('@talentui/webpack-config')({
         //项目目录根节点路径
         'root': path.resolve(__dirname, '../'),  
 
@@ -28,7 +28,7 @@
         /*
             dll列表，在你的应用中可以通过引入dll的方式引入一些共用的代码, 
             支持字符串和{file, manifest}格式的对象
-            如果是字符串，代表这个dll是基于talent-ui-dll-webpack-config打包的dll,这样talent-ui-webpack-config可以自动解析路径
+            如果是字符串，代表这个dll是基于@talentui/dll-webpack-config打包的dll,这样@talentui/webpack-config可以自动解析路径
             如果是自定义打包的，需要以对象的方式传递manifest和file
         */ 
         'dllList': ['@beisen/talent-ui-dll',{
@@ -36,7 +36,7 @@
             file: '@beisen/talent-ui-dll/build/talent-ui-dll.dev.js'
         }],
 
-        // 指定本地开发环境的承载页，默认认为talent-ui-webpack-config提供的，提供的挂载点为bsMain
+        // 指定本地开发环境的承载页，默认认为@talentui/webpack-config提供的，提供的挂载点为bsMain
         'hostPage': path.resolve(__dirname, '../index.html')
 
         // Array<string> | string 浏览器支持列表, 这个会影响你代码打包的速度和文件体积，支持的越新越好
@@ -90,7 +90,7 @@
 ```
 
 我从测试的项目截了个图，可以更直观的了解下：
-<img src='http://gitlab.beisencorp.com/ux-cnpm/talent-ui-webpack-config/raw/master/assets/object.assign.png' />
+<img src='http://gitlab.beisencorp.com/ux-cnpm/@talentui/webpack-config/raw/master/assets/object.assign.png' />
 
 注意，在不同的模块中，只要出现Object.assign的地方, 都会定义一个_extends方法， （同模块只定义一次。）这样的话，我们的代码中其实会有很多相同的代码块存在，感觉不太合适。另外一种办法就是polyfill.
 
@@ -114,7 +114,7 @@
 
 对于项目本身来说其实第二种是比较好的，即能满足我们的需求，又可以减少冗余的代码。
 
-我们在这里列出来了babel-preset-env中内置的所有的[polyfill列表](http://gitlab.beisencorp.com/ux-cnpm/talent-ui-webpack-config/raw/master/data/polyfill.json)，开发者可以参照这个列表来判断应该引入哪些polyfill
+我们在这里列出来了babel-preset-env中内置的所有的[polyfill列表](https://github.com/talentui/webpack-config/blob/master/data/polyfill.json)，开发者可以参照这个列表来判断应该引入哪些polyfill
 
 ### 默认引入的polyfill列表：
 * web.timers {"chrome":"58"}
@@ -123,13 +123,13 @@
 
 
 ### 我应该如何设置？
-* 如果你的项目中使用了大多数的es6 es7的新特性，**或者压根不打算考虑IE的话**，我们建议你直接配置`targetBrowsers`,指定你要支持的浏览器, 这样的话。让`talent-ui-webpack-config`自动选择使用哪些新特性。这样会比较简单一些。
+* 如果你的项目中使用了大多数的es6 es7的新特性，**或者压根不打算考虑IE的话**，我们建议你直接配置`targetBrowsers`,指定你要支持的浏览器, 这样的话。让`@talentui/webpack-config`自动选择使用哪些新特性。这样会比较简单一些。
 
-* 如果你打算支持ie，或者使用的es新特性并不多，我们建议你不去设置`targetBrowsers`或者`targets`, 这样默认会引入[全部的plugins](http://gitlab.beisencorp.com/ux-cnpm/talent-ui-webpack-config/raw/master/data/plugins.json), 和三个默认的polyfill, 剩下的你可以在需要的时候通过`transformInclude`添加, 如果你不打使用全部的plugins, 你可以在`transformExclude`当中把他踢出去。
+* 如果你打算支持ie，或者使用的es新特性并不多，我们建议你不去设置`targetBrowsers`或者`targets`, 这样默认会引入[全部的plugins](https://github.com/talentui/webpack-config/blob/master/data/plugins.json), 和三个默认的polyfill, 剩下的你可以在需要的时候通过`transformInclude`添加, 如果你不打使用全部的plugins, 你可以在`transformExclude`当中把他踢出去。
 
 
 ## NODE 环境变量设置
-talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配置，会影响到这些配置的环境变量有。
+@talentui/webpack-config会根据你运行时的变量来决定应用哪些配置，会影响到这些配置的环境变量有。
 > `asset_path`: 这个变量会影响到你构建代码时所设置的[publicPath](https://webpack.js.org/configuration/output/#output-publicpath), 因为在生产环境下我们使用了extractTextPlugin来拆分样式代码，所以运行时更改publicPath不太现实，所以我们只能为不同的环境构建不同的结果。
 
 > `dev_server=on` 通过webpack config生成webpack配置对象的时候，很难直接通过环境信息来确定是否启动了dev server, 通过观察process中的数据，发现通过process.mainModule来判断是否是通过webpack-dev-server做为启动模块，普通情况下是可靠的。如果你使用了其他的启动方式，这个时候你需要传递这个环境变量，明确告诉应用启动了webpack-dev-server. 并且加载dev-server模式下需要的配置和插件，如htmlwebpackpulugin和addassethtmlplugin等插件。
@@ -148,12 +148,12 @@ talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配�
 
 ### Dll 列表
 
-* [talent-ui-dll](https://www.npmjs.com/package/@beisen/talent-ui-dll)
+* [@talentui/dll-react](https://www.npmjs.com/package/@talentui/dll-react)
 * [talent-ui-dll-preact](https://www.npmjs.com/package/@beisen/talent-ui-dll-preact)
 
 ### 生成dll的工具：
 
-* [talent-ui-dll-webpack-config](https://www.npmjs.com/package/@beisen/talent-ui-dll-webpack-config)
+* [@talentui/dll-webpack-config](https://www.npmjs.com/package/@talentui/dll-webpack-config)
 
 ## 更新
 
@@ -218,7 +218,7 @@ talent-ui-webpack-config会根据你运行时的变量来决定应用哪些配�
 
 ### 6月29号
 
-> 把`webpack` `webpack-dev-server`放到devDependencies和peerDepencencies中，因为如果放在dependencies中，使用talent-ui-webpack-config的包还是需要手动安装webpack和webpack-dev-server,才能在npm scripts中访问到这两个包的可执行文件。
+> 把`webpack` `webpack-dev-server`放到devDependencies和peerDepencencies中，因为如果放在dependencies中，使用@talentui/webpack-config的包还是需要手动安装webpack和webpack-dev-server,才能在npm scripts中访问到这两个包的可执行文件。
 
 ### 6月28号
 
