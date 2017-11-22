@@ -1,6 +1,6 @@
 {
   "name": "@talentui/webpack-config",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0-beta.2",
   "main": "./webpack.config.js",
   "author": {
     "name": "Li Guoming",
@@ -29,7 +29,7 @@
   "dependencies": {
     "@talentui/dll-naming": "^1.0.0",
     "@talentui/dll-parser": "^1.0.1",
-    "@talentui/get-babel-config": "^7.0.2-beta.32",
+    "@talentui/get-babel-config": "^7.0.4-beta.0",
     "add-asset-html-webpack-plugin": "^2.1.2",
     "autoprefixer": "^7.1.2",
     "awesome-typescript-loader": "^3.4.0",
