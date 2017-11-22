@@ -1,6 +1,6 @@
 {
   "name": "@talentui/webpack-config",
-  "version": "0.0.0-development",
+  "version": "2.0.0-beta.0",
   "main": "./webpack.config.js",
   "author": {
     "name": "Li Guoming",
@@ -29,13 +29,12 @@
   "dependencies": {
     "@talentui/dll-naming": "^1.0.0",
     "@talentui/dll-parser": "^1.0.1",
-    "@talentui/get-babel-config": "^0.1.1",
-    "add-asset-html-webpack-plugin": "^2.0.1",
+    "@talentui/get-babel-config": "^7.0.1-beta.32",
+    "add-asset-html-webpack-plugin": "^2.1.2",
     "autoprefixer": "^7.1.2",
-    "awesome-typescript-loader": "^3.2.3",
-    "babel-core": "^6.24.1",
+    "awesome-typescript-loader": "^3.4.0",
     "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.0.0",
+    "babel-loader": "^8.0.0-beta.0",
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
     "css-loader": "^0.28.4",
     "eslint-loader": "^1.9.0",
@@ -51,7 +50,6 @@
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.2",
     "tslint-loader": "^3.5.3",
-    "typescript": "^2.4.2",
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
     "webpack-bundle-analyzer": "^2.8.2"
@@ -70,6 +68,7 @@
   "peerDependencies": {
     "eslint": "^4.5.0",
     "tslint": "^5.6.0",
+    "typescript": "^2.6.1",
     "webpack": "3.8.1",
     "webpack-dev-server": "^2.9.1"
   },
