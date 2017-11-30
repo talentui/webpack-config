@@ -45,4 +45,28 @@ describe("带参数初始化配置", () => {
             "_": cwd
         });
     });
+
+    it("如果提供applyPlugins测，那么applyPlugins方法应该被调用，并且参数是一个非空数组，同时config.plugins的值应该等于applyPlugins方法的返回值", ()=> {
+        let newPlugins = [];
+        let spy = jest.fn();
+        spy.mockReturnValue(newPlugins);
+        let config = webpackConfig({
+            applyPlugins: spy
+        });
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(spy).toBeCalledWith(expect.any(Array));
+        expect(config.plugins === newPlugins).toBe(true);
+    })
+
+    it("如果提供applyRules参数，那么applyRule方法应该被调用，并且参数是一个非空数组，同时config.modules.rules的值应该等于applyRules方法的返回值", () => {
+        let newRules = [];
+        let spy = jest.fn();
+        spy.mockReturnValue(newRules);
+        let config = webpackConfig({
+            applyRules: spy
+        })
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(spy).toBeCalledWith(expect.any(Array));
+        expect(config.module.rules === newRules).toBe(true);
+    })
 });

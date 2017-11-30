@@ -22,7 +22,7 @@ const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
 module.exports = (options = {}) => {
     // const ASSET_PATH = process.env.asset_path || "";
     //使用全部变量保存配置项，给loaders和plugins使用
-    const { globalObjectKey, appRoot, buildProd } = require("./constants.js");
+    const { globalObjectKey, appRoot, buildProd, typeFunc } = require("./constants.js");
 
     let {
         publicPath,
@@ -34,6 +34,19 @@ module.exports = (options = {}) => {
     } = (global[globalObjectKey] = o = require("./helpers/parse-config")(
         options
     ));
+
+    let {applyPlugins, applyRules} = options;
+
+    let plugins = require("./plugins");
+    let rules = require("./rules");
+
+    if(typeof(applyPlugins) === typeFunc){
+        plugins = applyPlugins(plugins);
+    }
+
+    if(typeof(applyRules) === typeFunc){
+        rules = applyRules(rules)
+    }
 
     return {
         context: moduleScope,
@@ -52,9 +65,9 @@ module.exports = (options = {}) => {
         module: {
             // makes missing exports an error instead of warning
             strictExportPresence: true,
-            rules: require("./rules")
+            rules
         },
-        plugins: require("./plugins"),
+        plugins,
         resolve: {
             extensions: require('./helpers/get-resolve-extensions'),
             // modules:  ["node_modules"],
