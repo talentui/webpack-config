@@ -2,7 +2,8 @@ const {
     globalObjectKey,
     languageMixed,
     languageJs,
-    languageTs
+    languageTs, 
+    buildProd
 } = require("../constants.js");
 const { devServer, engines, language, useLint } = global[globalObjectKey];
 
@@ -34,10 +35,10 @@ switch (language) {
 
 rules.push(require("./file-rule"));
 
-if (devServer) {
-    rules.push(require("./css-rule"), require("./sass-rule"));
-} else {
+if (buildProd) {
     rules.push(require("./extract-css-rule"), require("./extract-sass-rule"));
+} else {
+    rules.push(require("./css-rule"), require("./sass-rule"));
 }
 
 if (engines.indexOf("vue") !== -1) rules.push(require("./vue-rule"));
