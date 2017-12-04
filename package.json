@@ -27,8 +27,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@talentui/dll-naming": "^1.0.0",
-    "@talentui/dll-parser": "^1.0.1",
+    "@talentui/dll-parser": "^1.0.2",
     "@talentui/get-babel-config": "^0.2.0",
     "add-asset-html-webpack-plugin": "^2.0.1",
     "autoprefixer": "^7.1.2",
