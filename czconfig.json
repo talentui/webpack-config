@@ -1,0 +1,24 @@
+[
+    {
+        "name": "Loaders",
+        "value": "loader"
+    }, {
+        "name": "Plugins",
+        "value": "plugin"
+    }, {
+        "name": "Dev Server",
+        "value": "devserver"
+    }, {
+        "name": "Config",
+        "value": "config"
+    }, {
+        "name": "Babel",
+        "value": "babel"
+    }, {
+        "name": "Dll",
+        "value": "dll"
+    }, {
+        "name": "全部",
+        "value": "all"
+    }
+]
