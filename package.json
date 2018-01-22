@@ -50,6 +50,7 @@
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.2",
     "tslint-loader": "^3.5.3",
+    "uglifyjs-webpack-plugin": "^1.1.6",
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
     "webpack-bundle-analyzer": "^2.8.2"
