@@ -31,6 +31,7 @@ module.exports = (options = {}) => {
         friendly,
         moduleScope,
         dllList,
+        outputUseHash
     } = (global[globalObjectKey] = o = require("./helpers/parse-config")(
         options
     ));
@@ -52,10 +53,10 @@ module.exports = (options = {}) => {
         context: moduleScope,
         entry: o.entry,
         output: {
-            filename: buildProd
+            filename: outputUseHash
                 ? "[name]-[chunkhash].chunk.min.js"
                 : "[name].chunk.js",
-            chunkFilename: buildProd
+            chunkFilename: outputUseHash
                 ? "[name]-[chunkhash].chunk.min.js"
                 : "[name].chunk.js",
             path: path.resolve(appRoot, "dist/"),
