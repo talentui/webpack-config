@@ -33,7 +33,11 @@ module.exports = {
     options: {
         loaders: {
             css: generatorLoaders(),
-            sass: generatorLoaders('sass')
+            sass: generatorLoaders('sass'),
+            js: {
+                loader: 'babel-loader',
+                options: require("../helpers/babel-config.js")
+            }
         },
         transformToRequire: {
             video: 'src',
