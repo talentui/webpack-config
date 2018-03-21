@@ -13,7 +13,7 @@ module.exports = {
     languageJs: 'js',
     languageTs: 'ts',
     languageMixed: 'mixed',
-    buildProd: process.env.NODE_ENV === strProd,
+    // buildProd: process.env.NODE_ENV === strProd,
     appRoot: fs.realpathSync(process.cwd()),
     host: "127.0.0.1",
     port: 3000,

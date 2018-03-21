@@ -1,6 +1,6 @@
 const path = require("path");
-var { strProd, strDev, globalObjectKey, buildProd } = require("../constants.js");
-var { devServer, useCommonChunk, analysis, friendly } = global[
+var { strProd, strDev, globalObjectKey } = require("../constants.js");
+var { devServer, useCommonChunk, analysis, friendly, buildProd } = global[
     globalObjectKey
 ];
 
@@ -13,7 +13,7 @@ var plugins = [];
 //启用路径检查，因为在mac的文件系统下，不区分大小写
 if (enableCheck) plugins.push(require("./case-sensitive-path-plugin"));
 
-if (buildProd) plugins.push(require('./module-concatenation-plugin'));
+// if (buildProd) plugins.push(require('./module-concatenation-plugin'));
 
 plugins.push(require("./define-plugin"));
 
@@ -30,7 +30,7 @@ if (devServer) {
 if (friendly && devServer)
     plugins.push(require("./friendly-errors-webpack-plugin"));
 
-if (useCommonChunk) plugins.push(require("./common-chunk-plugin"));
+// if (useCommonChunk) plugins.push(require("./common-chunk-plugin"));
 
 if (buildProd) {
     plugins.push(require("./extract-text-plugin"));

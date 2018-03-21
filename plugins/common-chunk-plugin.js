@@ -1,4 +1,4 @@
-const { buildProd, globalObjectKey } = require("../constants.js");
+const { globalObjectKey } = require("../constants.js");
 const { outputUseHash } = global[globalObjectKey];
 
 module.exports = new (require("webpack")).optimize.CommonsChunkPlugin({

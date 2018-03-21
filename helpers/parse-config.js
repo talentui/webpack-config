@@ -8,7 +8,7 @@ const {
     defaultEngines,
     switchOn,
     switchOff,
-    buildProd
+    strProd
 } = require("../constants");
 const DllParser = require('@talentui/dll-parser')
 module.exports = options => {
@@ -17,6 +17,10 @@ module.exports = options => {
         console.warn("你没有提供应用的入口文件，默认指向[moduleScope]下的index.js文件");
         entry = "./index.js";
     }
+    let mode = require('./parse-mode')(options.mode);
+
+    let buildProd = mode === strProd;
+
     let moduleScope = path.resolve(appRoot, options.moduleScope || ".");
 
     //从环境变量中取配置
@@ -37,6 +41,10 @@ module.exports = options => {
     let outputUseHash = !devServer && buildProd;
 
     var config = {
+        //webpack 4新增的mode参数
+        mode,
+        //是否是生产环境构建
+        buildProd,
         // 是否启用analysis
         analysis: analysis === switchOn,
         //是否开启友好输出

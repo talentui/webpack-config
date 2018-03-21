@@ -22,7 +22,7 @@ const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
 module.exports = (options = {}) => {
     // const ASSET_PATH = process.env.asset_path || "";
     //使用全部变量保存配置项，给loaders和plugins使用
-    const { globalObjectKey, appRoot, buildProd, typeFunc } = require("./constants.js");
+    const { globalObjectKey, appRoot, typeFunc } = require("./constants.js");
 
     let {
         publicPath,
@@ -31,7 +31,9 @@ module.exports = (options = {}) => {
         friendly,
         moduleScope,
         dllList,
-        outputUseHash
+        outputUseHash,
+        buildProd,
+        mode
     } = (global[globalObjectKey] = o = require("./helpers/parse-config")(
         options
     ));
@@ -48,8 +50,8 @@ module.exports = (options = {}) => {
     if(typeof(applyRules) === typeFunc){
         rules = applyRules(rules)
     }
-
     return {
+        mode,
         context: moduleScope,
         entry: o.entry,
         output: {
@@ -62,6 +64,21 @@ module.exports = (options = {}) => {
             path: path.resolve(appRoot, "dist/"),
             publicPath: publicPath,
             pathinfo: !buildProd
+        },
+        optimization: {
+            runtimeChunk: {
+                name: 'webpack-bootstrap'
+            },
+            splitChunks: {
+                // chunks: 'all',
+                cacheGroups: {
+                    commons: {
+                        name: "common",
+                        chunks: "all",
+                        minChunks: 2
+                    }
+                }
+            }
         },
         module: {
             // makes missing exports an error instead of warning
@@ -85,6 +102,6 @@ module.exports = (options = {}) => {
             quiet: friendly
         },
         target: "web",
-        devtool: buildProd ? "cheap-source-map" : false
+        // devtool: buildProd ? "cheap-source-map" : false
     };
 };

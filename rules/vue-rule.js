@@ -1,5 +1,6 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-const { buildProd } = require("../constants.js");
+const { globalObjectKey  } = require("../constants.js");
+const {buildProd} = global[globalObjectKey];
 const vueStyleLoader = 'vue-style-loader';
 
 

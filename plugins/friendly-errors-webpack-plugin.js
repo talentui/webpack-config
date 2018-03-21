@@ -1,7 +1,5 @@
-const { globalObjectKey, buildProd, appRoot } = require("../constants.js");
-const { port, host, analysis, publicPath } = global[
-    globalObjectKey
-];
+const { globalObjectKey, appRoot } = require("../constants.js");
+const { port, host, analysis, publicPath, buildProd } = global[globalObjectKey];
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 
 module.exports = new FriendlyErrorsWebpackPlugin({

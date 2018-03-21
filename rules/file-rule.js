@@ -1,4 +1,4 @@
-const { buildProd, globalObjectKey } = require("../constants");
+const { globalObjectKey } = require("../constants");
 const { outputUseHash } = global[globalObjectKey];
 
 module.exports = {

@@ -2,10 +2,9 @@ const {
     globalObjectKey,
     languageMixed,
     languageJs,
-    languageTs, 
-    buildProd
+    languageTs
 } = require("../constants.js");
-const { devServer, engines, language, useLint } = global[globalObjectKey];
+const { devServer, engines, language, useLint, buildProd } = global[globalObjectKey];
 
 const preTsRule = require("./pre-ts-rule");
 const tsRule = require("./ts-rule");

@@ -22,6 +22,9 @@ describe("用空参数初始化配置", () => {
             _: cwd
         });
     });
+    it('mode应该等于development', () => {
+        expect(config.mode).toBe('development')
+    })
 });
 
 describe("带参数初始化配置", () => {
@@ -31,7 +34,8 @@ describe("带参数初始化配置", () => {
         alias: {
             "@": "xxxx",
             _: cwd
-        }
+        },
+        mode: 'production'
     });
 
     it("context需要指向根目录下的src", () => {
@@ -68,5 +72,8 @@ describe("带参数初始化配置", () => {
         expect(spy).toHaveBeenCalledTimes(1);
         expect(spy).toBeCalledWith(expect.any(Array));
         expect(config.module.rules === newRules).toBe(true);
+    })
+    it('mode言等于production', () => {
+        expect(config.mode).toBe('production')
     })
 });
