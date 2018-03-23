@@ -34,7 +34,7 @@ switch (language) {
 
 rules.push(require("./file-rule"));
 
-if (buildProd) {
+if (!devServer) {
     rules.push(require("./extract-css-rule"), require("./extract-sass-rule"));
 } else {
     rules.push(require("./css-rule"), require("./sass-rule"));

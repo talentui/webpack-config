@@ -33,22 +33,23 @@ module.exports = (options = {}) => {
         dllList,
         outputUseHash,
         buildProd,
-        mode
+        mode,
+        devServer
     } = (global[globalObjectKey] = o = require("./helpers/parse-config")(
         options
     ));
 
-    let {applyPlugins, applyRules} = options;
+    let { applyPlugins, applyRules } = options;
 
     let plugins = require("./plugins");
     let rules = require("./rules");
 
-    if(typeof(applyPlugins) === typeFunc){
+    if (typeof applyPlugins === typeFunc) {
         plugins = applyPlugins(plugins);
     }
 
-    if(typeof(applyRules) === typeFunc){
-        rules = applyRules(rules)
+    if (typeof applyRules === typeFunc) {
+        rules = applyRules(rules);
     }
     return {
         mode,
@@ -65,29 +66,16 @@ module.exports = (options = {}) => {
             publicPath: publicPath,
             pathinfo: !buildProd
         },
-        optimization: {
-            runtimeChunk: {
-                name: 'webpack-bootstrap'
-            },
-            splitChunks: {
-                // chunks: 'all',
-                cacheGroups: {
-                    commons: {
-                        name: "common",
-                        chunks: "all",
-                        minChunks: 2
-                    }
-                }
-            }
-        },
+        //webpack 4的优化配置，
+        optimization: require('./helpers/optimization')(devServer),
         module: {
-            // makes missing exports an error instead of warning
+            // 如果忘了export，就报错，而不是只级警告
             strictExportPresence: true,
             rules
         },
         plugins,
         resolve: {
-            extensions: require('./helpers/get-resolve-extensions'),
+            extensions: require("./helpers/get-resolve-extensions"),
             // modules:  ["node_modules"],
             alias: o.alias,
             plugins: [new ModuleScopePlugin(moduleScope)]
