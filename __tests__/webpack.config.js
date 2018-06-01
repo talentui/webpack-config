@@ -69,4 +69,16 @@ describe("带参数初始化配置", () => {
         expect(spy).toBeCalledWith(expect.any(Array));
         expect(config.module.rules === newRules).toBe(true);
     })
+
+    it("如果提供了configPatch，那么该参数是一个函数，并且该函数应该会被调用，同时参数是一个对象，返回值也是一个对象",()=>{
+        const spy = jest.fn();
+        const newConfig = {};
+        spy.mockReturnValue(newConfig)
+        const config = webpackConfig({
+            configPatch: spy
+        })
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(spy).toBeCalledWith(expect.any(Object));
+        expect(config === newConfig).toBe(true);
+    })
 });
