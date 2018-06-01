@@ -31,7 +31,8 @@ module.exports = (options = {}) => {
         friendly,
         moduleScope,
         dllList,
-        outputUseHash
+        outputUseHash,
+        configPatch
     } = (global[globalObjectKey] = o = require("./helpers/parse-config")(
         options
     ));
@@ -49,7 +50,7 @@ module.exports = (options = {}) => {
         rules = applyRules(rules)
     }
 
-    return {
+    const rawConfig = {
         context: moduleScope,
         entry: o.entry,
         output: {
@@ -87,4 +88,6 @@ module.exports = (options = {}) => {
         target: "web",
         devtool: buildProd ? "cheap-source-map" : false
     };
+    if(typeof(configPatch) === typeFunc) return configPatch(rawConfig);
+    return rawConfig;
 };
