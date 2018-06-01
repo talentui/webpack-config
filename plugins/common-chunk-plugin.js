@@ -1,7 +1,8 @@
-const { buildProd } = require("../constants.js");
+const { buildProd, globalObjectKey } = require("../constants.js");
+const { outputUseHash } = global[globalObjectKey];
 
-module.exports = new (require("webpack").optimize.CommonsChunkPlugin)({
+module.exports = new (require("webpack")).optimize.CommonsChunkPlugin({
     names: ["common", "webpack-bootstrap"],
     minChunks: Infinity,
-    filename: buildProd ? "[name]-[chunkHash].chunk.min.js" : "[name].chunk.js"
+    filename: outputUseHash ? "[name]-[chunkhash].chunk.min.js" : "[name].chunk.js"
 });

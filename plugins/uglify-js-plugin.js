@@ -1,10 +1,21 @@
-module.exports = new (require("webpack")).optimize.UglifyJsPlugin({
-    compress: {
-        warnings: false,
-        screw_ie8: false,
-        drop_console: true
+// module.exports = new (require("webpack")).optimize.UglifyJsPlugin({
+//     compress: {
+//         warnings: false,
+//         screw_ie8: false,
+//         drop_console: true
+//     },
+//     mangle: { screw_ie8: false },
+//     output: { screw_ie8: false },
+//     sourceMap: true
+// });
+module.exports = new (require('uglifyjs-webpack-plugin'))({
+    uglifyOptions: {
+        ie8: true,
+        ecma: 6,
+        compress: {
+            drop_console: true
+        }
     },
-    mangle: { screw_ie8: false },
-    output: { screw_ie8: false },
-    sourceMap: true
+    sourceMap: true,
+    parallel: true
 });

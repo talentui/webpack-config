@@ -35,7 +35,10 @@
             manifest: '@beisen/talent-ui-dll/build/manifest.dev.json',
             file: '@beisen/talent-ui-dll/build/talent-ui-dll.dev.js'
         }],
-
+        /*
+            公共资源路径，和webpack中的会影响到outpub.publicPath
+        */
+        "publicPath": "" ,
         // 指定本地开发环境的承载页，默认认为@talentui/webpack-config提供的，提供的挂载点为bsMain
         'hostPage': path.resolve(__dirname, '../index.html')
 
@@ -69,6 +72,17 @@
         'language': "js",
         // 在构建时是否启用lint检查，默认为false，为true时需要提供相应的.eslintrc和.tslintrc文件
         'useLint': false
+
+        // 扩展plugins的支持方法
+        "applyPlugins": (plugins) => {
+            let plugin = new OtherPlugin(options);
+            return plugins.concat(plugin);
+        },
+        // rules的扩展方法
+        "applyRules": (rules) => {
+            let rule = new OtherRule(options);
+            return rules.concat(rule)
+        }
     })
 ```
 

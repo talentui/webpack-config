@@ -31,7 +31,19 @@ module.exports = {
     test: /\.vue$/,
     loader: "vue-loader",
     options: {
-        css: generatorLoaders(),
-        sass: generatorLoaders('sass')
+        loaders: {
+            css: generatorLoaders(),
+            sass: generatorLoaders('sass'),
+            js: {
+                loader: 'babel-loader',
+                options: require("../helpers/babel-config.js")
+            }
+        },
+        transformToRequire: {
+            video: 'src',
+            source: 'src',
+            img: 'src',
+            image: 'xlink:href'
+          }
     }
 };

@@ -1,16 +1,16 @@
 {
   "name": "@talentui/webpack-config",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "main": "./webpack.config.js",
   "author": {
     "name": "Li Guoming",
     "email": "liguoming@beisen.com"
   },
   "scripts": {
-    "data": "node ./data/generate-config-data.js",
-    "prepublish": "yarn data && yarn test",
-    "p": "npm publish --tag beta",
-    "test": "jest"
+    "precm": "jest",
+    "test": "jest",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "cm": "git-cz"
   },
   "maintainers": [
     {
@@ -27,28 +27,22 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@talentui/dll-naming": "^1.0.0",
-    "@talentui/dll-parser": "^1.0.1",
+    "@talentui/dll-parser": "^1.0.2",
+    "@talentui/get-babel-config": "^0.2.0",
     "add-asset-html-webpack-plugin": "^2.0.1",
     "autoprefixer": "^7.1.2",
-    "awesome-typescript-loader": "^3.2.3",
+    "awesome-typescript-loader": "^3.4.1",
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
     "css-loader": "^0.28.4",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-react": "^7.3.0",
-    "extract-text-webpack-plugin": "^2.1.0",
+    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^0.11.2",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.28.0",
-    "lodash.uniq": "^4.5.0",
     "node-sass": "^4.5.3",
     "postcss-flexbugs-fixes": "^3.2.0",
     "postcss-loader": "^2.0.6",
@@ -56,22 +50,32 @@
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.2",
     "tslint-loader": "^3.5.3",
-    "typescript": "^2.4.2",
-    "vue-loader": "^13.0.2",
+    "uglifyjs-webpack-plugin": "^1.1.6",
+    "vue-loader": "^14.1.1",
     "vue-style-loader": "^3.0.1",
     "webpack-bundle-analyzer": "^2.8.2"
   },
   "devDependencies": {
+    "@talentui/cz-project-changelog": "^0.0.0-development",
+    "commitizen": "2.9.6",
     "eslint": "^4.5.0",
+    "husky": "0.14.3",
     "jest": "^21.1.0",
+    "semantic-release": "^8.2.0",
     "tslint": "^5.6.0",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.5"
   },
   "peerDependencies": {
     "eslint": "^4.5.0",
     "tslint": "^5.6.0",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1"
+    "typescript": "^2.6.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/@talentui/cz-project-changelog"
+    }
   }
 }

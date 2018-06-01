@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
-
+// 1.0.1
 /**
  * @options
  * root： optional 项目的根目录 默认为当前文件所有路径的上上级，最好还是传进来
@@ -22,7 +22,7 @@ const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
 module.exports = (options = {}) => {
     // const ASSET_PATH = process.env.asset_path || "";
     //使用全部变量保存配置项，给loaders和plugins使用
-    const { globalObjectKey, appRoot, buildProd } = require("./constants.js");
+    const { globalObjectKey, appRoot, buildProd, typeFunc } = require("./constants.js");
 
     let {
         publicPath,
@@ -31,19 +31,32 @@ module.exports = (options = {}) => {
         friendly,
         moduleScope,
         dllList,
-        configPatch 
+        outputUseHash
     } = (global[globalObjectKey] = o = require("./helpers/parse-config")(
         options
     ));
 
-    const rawConfig = {
+    let {applyPlugins, applyRules} = options;
+
+    let plugins = require("./plugins");
+    let rules = require("./rules");
+
+    if(typeof(applyPlugins) === typeFunc){
+        plugins = applyPlugins(plugins);
+    }
+
+    if(typeof(applyRules) === typeFunc){
+        rules = applyRules(rules)
+    }
+
+    return {
         context: moduleScope,
         entry: o.entry,
         output: {
-            filename: buildProd
+            filename: outputUseHash
                 ? "[name]-[chunkhash].chunk.min.js"
                 : "[name].chunk.js",
-            chunkFilename: buildProd
+            chunkFilename: outputUseHash
                 ? "[name]-[chunkhash].chunk.min.js"
                 : "[name].chunk.js",
             path: path.resolve(appRoot, "dist/"),
@@ -53,9 +66,9 @@ module.exports = (options = {}) => {
         module: {
             // makes missing exports an error instead of warning
             strictExportPresence: true,
-            rules: require("./rules")
+            rules
         },
-        plugins: require("./plugins"),
+        plugins,
         resolve: {
             extensions: require('./helpers/get-resolve-extensions'),
             // modules:  ["node_modules"],

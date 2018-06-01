@@ -14,7 +14,7 @@ const DllParser = require('@talentui/dll-parser')
 module.exports = options => {
     let { entry } = options;
     if (!entry) {
-        console.warn("你没有提供应用的入口文件，默认指[向moduleScope]下的index.js文件");
+        console.warn("你没有提供应用的入口文件，默认指向[moduleScope]下的index.js文件");
         entry = "./index.js";
     }
     let moduleScope = path.resolve(appRoot, options.moduleScope || ".");
@@ -31,15 +31,22 @@ module.exports = options => {
         }
     }
 
+    let devServer = dev_server === switchOn;
+
+    // 只在生产环境构建且不启动devServer的时候输出文件名字启用hash
+    let outputUseHash = !devServer && buildProd;
+
     var config = {
         // 是否启用analysis
         analysis: analysis === switchOn,
         //是否开启友好输出
         friendly: friendly !== switchOff,
         //静态资源路径
-        publicPath: asset_path || "",
+        publicPath: asset_path || options.publicPath || "",
         //是否启用dev_server
-        devServer: dev_server === switchOn,
+        devServer,
+
+        outputUseHash,
         // 入口文件
         entry,
         // dll 列表，数组 || undefined
