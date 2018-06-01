@@ -31,7 +31,8 @@ module.exports = (options = {}) => {
         friendly,
         moduleScope,
         dllList,
-        outputUseHash
+        outputUseHash,
+        configPatch
     } = (global[globalObjectKey] = o = require("./helpers/parse-config")(
         options
     ));
