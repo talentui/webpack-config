@@ -85,7 +85,9 @@ module.exports = options => {
         //支持的视图库
         engines: options.engines || defaultEngines,
         // js ts mixed //使用开发语言，js或者ts，或者混着用
-        language: options.language || languageJs
+        language: options.language || languageJs,
+        //最终的config修改方法
+        configPatch : options.configPatch
     };
     return config;
 };
