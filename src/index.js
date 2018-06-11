@@ -67,7 +67,7 @@ module.exports = (options = {}) => {
             pathinfo: !buildProd
         },
         //webpack 4的优化配置，
-        optimization: require('./helpers/optimization')(devServer),
+        optimization: require('./helpers/optimization')(),
         module: {
             // 如果忘了export，就报错，而不是只级警告
             strictExportPresence: true,

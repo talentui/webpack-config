@@ -1,5 +1,5 @@
 const path = require("path");
-const webpackConfig = require("../webpack.config.js");
+const webpackConfig = require("../src");
 const cwd = process.cwd();
 
 describe("用空参数初始化配置", () => {
