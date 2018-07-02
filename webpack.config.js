@@ -76,7 +76,7 @@ module.exports = (options = {}) => {
             alias: o.alias,
             plugins: [new ModuleScopePlugin(moduleScope)]
         },
-        devServer: {
+        devServer:  Object.assign({
             port: port,
             host: host,
             hot: true,
@@ -84,7 +84,7 @@ module.exports = (options = {}) => {
             publicPath: "/",
             headers: { "Access-Control-Allow-Origin": "*" },
             quiet: friendly
-        },
+        }, options.devServer),
         target: "web",
         devtool: buildProd ? "cheap-source-map" : false
     };
