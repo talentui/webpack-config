@@ -28,7 +28,7 @@ $RECYCLE.BIN/
 
 # App specific
 
-node_modules/
+node_modules*/
 .tmp
 /webapp/src/main.js
 
