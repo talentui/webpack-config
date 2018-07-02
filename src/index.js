@@ -39,6 +39,8 @@ module.exports = (options = {}) => {
         options
     ));
 
+    console.log(mode,'2222222222222')
+
     let { applyPlugins, applyRules } = options;
 
     let plugins = require("./plugins");
