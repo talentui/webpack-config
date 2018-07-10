@@ -10,8 +10,8 @@
 // });
 module.exports = new (require('uglifyjs-webpack-plugin'))({
     uglifyOptions: {
-        ie8: true,
-        ecma: 6,
+        // ie8: true,
+        ecma: 5,
         compress: {
             drop_console: true
         }

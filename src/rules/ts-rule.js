@@ -1,4 +1,3 @@
-const path = require('path');
 const {globalObjectKey} = require('../constants')
 const { moduleScope, buildProd } = global[globalObjectKey];
 const babelConfig = require("../helpers/babel-config.js");

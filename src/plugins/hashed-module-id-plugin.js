@@ -1,4 +1,2 @@
 const webpack = require('webpack');
-module.exports = new webpack.HashedModuleIdsPlugin({
-    hashDigestLength: 5
-})
+module.exports = new webpack.HashedModuleIdsPlugin()

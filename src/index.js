@@ -1,5 +1,4 @@
 const path = require("path");
-const fs = require("fs");
 const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
 // 1.0.1
 /**
@@ -30,16 +29,12 @@ module.exports = (options = {}) => {
         host,
         friendly,
         moduleScope,
-        dllList,
         outputUseHash,
         buildProd,
-        mode,
-        devServer
+        mode
     } = (global[globalObjectKey] = o = require("./helpers/parse-config")(
         options
     ));
-
-    console.log(mode,'2222222222222')
 
     let { applyPlugins, applyRules } = options;
 
@@ -82,7 +77,7 @@ module.exports = (options = {}) => {
             alias: o.alias,
             plugins: [new ModuleScopePlugin(moduleScope)]
         },
-        devServer: {
+        devServer:  Object.assign({
             port: port,
             host: host,
             hot: true,
@@ -90,8 +85,20 @@ module.exports = (options = {}) => {
             publicPath: "/",
             headers: { "Access-Control-Allow-Origin": "*" },
             quiet: friendly
-        },
+        }, options.devServer),
         target: "web",
+        node: {
+            // prevent webpack from injecting useless setImmediate polyfill because Vue
+            // source contains it (although only uses it if it's native).
+            setImmediate: false,
+            // prevent webpack from injecting mocks to Node native modules
+            // that does not make sense for the client
+            dgram: 'empty',
+            fs: 'empty',
+            net: 'empty',
+            tls: 'empty',
+            child_process: 'empty'
+          }
         // devtool: buildProd ? "cheap-source-map" : false
     };
 };

@@ -1,5 +1,4 @@
-const path = require("path");
-var { strProd, strDev, globalObjectKey } = require("../constants.js");
+var { globalObjectKey } = require("../constants.js");
 var { devServer, analysis, friendly, buildProd } = global[
     globalObjectKey
 ];
@@ -16,7 +15,7 @@ if (enableCheck) plugins.push(require("./case-sensitive-path-plugin"));
 //引用Dll的Plugin
 plugins = plugins.concat(require("./dll-reference-plugin"));
 
-// if(buildProd) plugins.push(require('./hashed-module-id-plugin'))
+if(buildProd) plugins.push(require('./hashed-module-id-plugin'))
 
 if (devServer) {
     plugins.push(require("./hot-module-replacement-plugin"));
