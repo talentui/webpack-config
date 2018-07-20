@@ -7,7 +7,7 @@ var { devServer, analysis, friendly, buildProd } = global[
 
 const enableCheck = process.env.check === "on";
 
-var plugins = [];
+var plugins = [require('./progressbar-plugin'), require('./clean-webpack-plugin')];
 
 //启用路径检查，因为在mac的文件系统下，不区分大小写
 if (enableCheck) plugins.push(require("./case-sensitive-path-plugin"));
