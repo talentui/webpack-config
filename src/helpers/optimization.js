@@ -7,20 +7,20 @@ module.exports = function() {
     };
     return {
         runtimeChunk: {
-            name: "webpack-runtime"
+            name: "webpack-bootstrap"
         },
         splitChunks: {
             chunks: "all",
             minSize: 3000,
             minChunks: 1,
-            maxAsyncRequests: 5,
+            maxAsyncRequests: 6,
             maxInitialRequests: 5,
             automaticNameDelimiter: "-",
             name: true,
             cacheGroups: {
                 vendors: {
                     name:'vendors',
-                    minChunks:2,
+                    minChunks:1,
                     test: /[\\/]node_modules[\\/]/,
                     priority: 10
                 },
