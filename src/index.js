@@ -79,6 +79,7 @@ module.exports = (options = {}) => {
             alias: o.alias,
             plugins: [new ModuleScopePlugin(moduleScope)]
         },
+        externals: options.externals,
         devServer: Object.assign(
             {
                 port: port,
