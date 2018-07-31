@@ -21,6 +21,8 @@ const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
 module.exports = (options = {}) => {
     // const ASSET_PATH = process.env.asset_path || "";
     //使用全部变量保存配置项，给loaders和plugins使用
+    const checkDeps = require('./helpers/checkdeps');
+    if(checkDeps) process.exit(1);
     const { globalObjectKey, appRoot, typeFunc } = require("./constants.js");
 
     let {
@@ -64,7 +66,7 @@ module.exports = (options = {}) => {
             pathinfo: !buildProd
         },
         //webpack 4的优化配置，
-        optimization: require('./helpers/optimization')(),
+        optimization: require("./helpers/optimization")(),
         module: {
             // 如果忘了export，就报错，而不是只级警告
             strictExportPresence: true,
@@ -77,28 +79,27 @@ module.exports = (options = {}) => {
             alias: o.alias,
             plugins: [new ModuleScopePlugin(moduleScope)]
         },
-        devServer:  Object.assign({
-            port: port,
-            host: host,
-            hot: true,
-            contentBase: path.resolve(appRoot, "dist/"),
-            publicPath: "/",
-            headers: { "Access-Control-Allow-Origin": "*" },
-            quiet: friendly
-        }, options.devServer),
+        devServer: Object.assign(
+            {
+                port: port,
+                host: host,
+                hot: true,
+                contentBase: path.resolve(appRoot, "dist/"),
+                publicPath: "/",
+                headers: { "Access-Control-Allow-Origin": "*" },
+                quiet: friendly
+            },
+            options.devServer
+        ),
         target: "web",
         node: {
-            // prevent webpack from injecting useless setImmediate polyfill because Vue
-            // source contains it (although only uses it if it's native).
             setImmediate: false,
-            // prevent webpack from injecting mocks to Node native modules
-            // that does not make sense for the client
-            dgram: 'empty',
-            fs: 'empty',
-            net: 'empty',
-            tls: 'empty',
-            child_process: 'empty'
-          }
-        // devtool: buildProd ? "cheap-source-map" : false
+            dgram: "empty",
+            fs: "empty",
+            net: "empty",
+            tls: "empty",
+            child_process: "empty"
+        },
+        devtool: buildProd ? "cheap-source-map" : false
     };
 };

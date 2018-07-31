@@ -28,7 +28,7 @@ module.exports = options => {
 
     if(!dev_server){
         // 尝试通过启动模块来判断是不是使用了webpack-dev-server
-        const {mainModule} = process;
+        const {mainModule={}} = process;
         const reg = /webpack-dev-server\.js/
         if(reg.test(mainModule.filename)){
             dev_server = switchOn

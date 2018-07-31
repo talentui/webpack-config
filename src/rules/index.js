@@ -4,7 +4,7 @@ const {
     languageJs,
     languageTs
 } = require("../constants.js");
-const { devServer, engines, language, useLint } = global[globalObjectKey];
+const { devServer, language, useLint } = global[globalObjectKey];
 
 const preTsRule = require("./pre-ts-rule");
 const tsRule = require("./ts-rule");
@@ -39,7 +39,5 @@ if (!devServer) {
 } else {
     rules.push(require("./css-rule"), require("./sass-rule"));
 }
-
-if (engines.indexOf("vue") !== -1) rules.push(require("./vue-rule"));
 
 module.exports = rules;
