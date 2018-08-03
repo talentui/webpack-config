@@ -1,11 +1,14 @@
 const path = require("path");
 const chalk = require("chalk");
-const constants = require('../constants')
+const constants = require("../constants");
 const cwd = process.cwd();
-const buildDeps = {
+const webpackDeps = {
     webpack: "webpack",
     webpackCLI: "webpack-cli",
-    webpackDevServer: "webpack-dev-server",
+    webpackDevServer: "webpack-dev-server"
+};
+
+const stylesDeps = {
     nodeSass: "node-sass",
     sassLoader: "sass-loader"
 };
@@ -20,38 +23,32 @@ function keyNotIn(requireDeps, depsConfig) {
     return tempArr;
 }
 
-let projPackageJSON = null;
-try {
-    projPackageJSON = require(path.resolve(cwd, "package.json"));
-} catch (err) {
-    console.log(
-        "没有在您在项目当中发现package.json, 请执行%cnpm init创建一个",
-        "color:green"
-    );
-}
+module.exports = function(styles) {
+    let buildDeps =
+        styles.indexOf("sass") === -1
+            ? webpackDeps
+            : Object.assign({}, webpackDeps, stylesDeps);
 
-let projDevDeps = projPackageJSON[depStr];
+    let projPackageJSON = require(path.resolve(cwd, "package.json"));
 
-let itemInProjDevDeps = keyNotIn(buildDeps, projDevDeps);
-if (itemInProjDevDeps.length > 0) {
-    let joinedItem = itemInProjDevDeps.join(" ");
-    console.log(
-        `没有你您项目中的`,
-        chalk.cyan(depStr),
-        "找到",
-        chalk.cyan(joinedItem),
-        '请使用',
-        chalk.cyan(`npm install -D ${joinedItem}`),
-        '进行安装, 如果您把以上依赖放到了 ',
-        chalk.cyan('dependencies'),
-        ' 请放到项目的',
-        chalk.cyan(depStr),
-        ' 中'
-    );
-}
-if(constants.strTest === process.env.NODE_ENV){
-    module.exports = false;
-}else{
-    module.exports = itemInProjDevDeps.length > 0;
-}
+    let projDevDeps = projPackageJSON[depStr] || {};
 
+    let itemInProjDevDeps = keyNotIn(buildDeps, projDevDeps);
+    if (itemInProjDevDeps.length > 0) {
+        let joinedItem = itemInProjDevDeps.join(" ");
+        console.log(
+            `没有在当前项目的 ${chalk.cyan(depStr)} 找到 ${chalk.cyan(
+                joinedItem
+            )} 请使用`,
+            chalk.cyan(`npm install -D ${joinedItem}`),
+            `进行安装, 如果您把以上依赖放到了 ${chalk.cyan(
+                "dependencies"
+            )} 请放到项目的 ${chalk.cyan(depStr)}  中`
+        );
+    }
+    if (constants.strTest === process.env.NODE_ENV) {
+        return false;
+    } else {
+        return itemInProjDevDeps.length > 0;
+    }
+};

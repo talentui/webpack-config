@@ -82,7 +82,8 @@
         "applyRules": (rules) => {
             let rule = new OtherRule(options);
             return rules.concat(rule)
-        }
+        },
+        "styles": [any of 'sass' or 'css']
     })
 ```
 

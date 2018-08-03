@@ -1,5 +1,6 @@
 const path = require("path");
 const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
+const { styles } = require("./constants");
 // 1.0.1
 /**
  * @options
@@ -21,7 +22,7 @@ const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
 module.exports = (options = {}) => {
     // const ASSET_PATH = process.env.asset_path || "";
     //使用全部变量保存配置项，给loaders和plugins使用
-    const checkDeps = require("./helpers/checkdeps");
+    const checkDeps = require("./helpers/checkdeps")(options.styles || styles);
     if (checkDeps) process.exit(1);
     const { globalObjectKey, appRoot, typeFunc } = require("./constants.js");
 
