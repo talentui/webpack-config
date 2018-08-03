@@ -33,7 +33,6 @@ try {
 let projDevDeps = projPackageJSON[depStr];
 
 let itemInProjDevDeps = keyNotIn(buildDeps, projDevDeps);
-console.log(itemInProjDevDeps)
 if (itemInProjDevDeps.length > 0) {
     let joinedItem = itemInProjDevDeps.join(" ");
     console.log(

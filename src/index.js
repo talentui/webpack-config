@@ -21,8 +21,8 @@ const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
 module.exports = (options = {}) => {
     // const ASSET_PATH = process.env.asset_path || "";
     //使用全部变量保存配置项，给loaders和plugins使用
-    const checkDeps = require('./helpers/checkdeps');
-    if(checkDeps) process.exit(1);
+    const checkDeps = require("./helpers/checkdeps");
+    if (checkDeps) process.exit(1);
     const { globalObjectKey, appRoot, typeFunc } = require("./constants.js");
 
     let {
@@ -54,17 +54,20 @@ module.exports = (options = {}) => {
         mode,
         context: moduleScope,
         entry: o.entry,
-        output: {
-            filename: outputUseHash
-                ? "[name]-[chunkhash].chunk.min.js"
-                : "[name].chunk.js",
-            chunkFilename: outputUseHash
-                ? "[name]-[chunkhash].chunk.min.js"
-                : "[name].chunk.js",
-            path: path.resolve(appRoot, "dist/"),
-            publicPath: publicPath,
-            pathinfo: !buildProd
-        },
+        output: Object.assign(
+            {
+                filename: outputUseHash
+                    ? "[name]-[chunkhash].chunk.min.js"
+                    : "[name].chunk.js",
+                chunkFilename: outputUseHash
+                    ? "[name]-[chunkhash].chunk.min.js"
+                    : "[name].chunk.js",
+                path: path.resolve(appRoot, "dist/"),
+                publicPath: publicPath,
+                pathinfo: !buildProd
+            },
+            options.output
+        ),
         //webpack 4的优化配置，
         optimization: require("./helpers/optimization")(),
         module: {
