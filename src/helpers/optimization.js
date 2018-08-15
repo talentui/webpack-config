@@ -1,7 +1,7 @@
 var { globalObjectKey, projType } = require("../constants.js");
-var { useCommonChunk } = global[globalObjectKey];
-module.exports = function(projectType) {
-    if (!useCommonChunk)
+var { useCommonChunk, projectType } = global[globalObjectKey];
+module.exports = function() {
+    if (!useCommonChunk || projectType === projType.module)
         return {
             runtimeChunk: false,
             splitChunks: false

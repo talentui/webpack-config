@@ -1,7 +1,20 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { globalObjectKey } = require("../constants.js");
-const { buildProd } = global[globalObjectKey];
+const { globalObjectKey, projType } = require("../constants.js");
+const { buildProd, projectType } = global[globalObjectKey];
+
+let name = '';
+let nameProd = '';
+let packageVersion = require('../helpers/get-proj-version')();
+
+if(projectType === projType.module){
+    name='css/[name].css';
+    nameProd = `css/[name]-${packageVersion}.min.css`;
+}else {
+    name = "css/[name].css";
+    nameProd = "css/[name]-[hash].min.css";
+}
+
 
 module.exports = new MiniCssExtractPlugin({
-    filename: buildProd ? "css/[name]-[hash].min.css" : "css/[name].css"
+    filename: buildProd ? nameProd : name
 });

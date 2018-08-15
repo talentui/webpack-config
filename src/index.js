@@ -27,12 +27,10 @@ module.exports = (options = {}) => {
     const { globalObjectKey, appRoot, typeFunc, projType } = require("./constants.js");
 
     let {
-        publicPath,
         port,
         host,
         friendly,
         moduleScope,
-        outputUseHash,
         buildProd,
         mode
     } = (global[globalObjectKey] = o = require("./helpers/parse-config")(
@@ -55,24 +53,9 @@ module.exports = (options = {}) => {
         mode,
         context: moduleScope,
         entry: o.entry,
-        output: Object.assign(
-            {
-                filename: outputUseHash
-                    ? "[name]-[chunkhash].chunk.min.js"
-                    : "[name].chunk.js",
-                chunkFilename: outputUseHash
-                    ? "[name]-[chunkhash].chunk.min.js"
-                    : "[name].chunk.js",
-                path: path.resolve(appRoot, "dist/"),
-                publicPath: publicPath,
-                pathinfo: !buildProd
-            },
-            options.output
-        ),
+        output: require('./helpers/output-name')(options.output),
         //webpack 4的优化配置，
-        optimization: require("./helpers/optimization")(
-            options.projectType || projType.spa
-        ),
+        optimization: require("./helpers/optimization")(),
         module: {
             // 如果忘了export，就报错，而不是只级警告
             strictExportPresence: true,

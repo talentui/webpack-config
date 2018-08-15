@@ -84,7 +84,7 @@
             return rules.concat(rule)
         },
         "styles": [any of 'sass' or 'css'],
-        projectType: 'spa' || 'mpa', //根据项目的类型区别项目构建方式
+        projectType: 'spa' || 'mpa' || 'module', //根据项目的类型区别项目构建方式
     })
 ```
 

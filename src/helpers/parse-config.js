@@ -8,7 +8,8 @@ const {
     defaultEngines,
     switchOn,
     switchOff,
-    strProd
+    strProd,
+    projType
 } = require("../constants");
 const DllParser = require('@talentui/dll-parser')
 module.exports = options => {
@@ -79,7 +80,7 @@ module.exports = options => {
         targets: options.targets,
         //是否启用commonChunk
         useCommonChunk:
-            options.useCommonChunk === undefined
+            options.useCommonChunk === undefined 
                 ? true
                 : options.useCommonChunk,
         //包含的babel polyfill或者plugin
@@ -93,7 +94,8 @@ module.exports = options => {
         //支持的视图库
         engines: options.engines || defaultEngines,
         // js ts mixed //使用开发语言，js或者ts，或者混着用
-        language: options.language || languageJs
+        language: options.language || languageJs,
+        projectType: options.projectType || projType.spa
     };
     return config;
 };

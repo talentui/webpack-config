@@ -23,6 +23,7 @@ module.exports = {
     styles: ['sass','css'],
     projType: {
         spa: 'spa',
-        mpa: 'mpa'
+        mpa: 'mpa',
+        module: 'module' 
     }
 };
