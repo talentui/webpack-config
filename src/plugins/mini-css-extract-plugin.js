@@ -7,8 +7,8 @@ let nameProd = '';
 let packageVersion = require('../helpers/get-proj-version')();
 
 if(projectType === projType.module){
-    name='css/[name].css';
-    nameProd = `css/[name]-${packageVersion}.min.css`;
+    name='[name].css';
+    nameProd = `[name]-${packageVersion}.min.css`;
 }else {
     name = "css/[name].css";
     nameProd = "css/[name]-[hash].min.css";
