@@ -12,14 +12,6 @@ module.exports = function(projectType) {
     };
 
     let cacheGroups = {
-        styles: {
-            name: 'styles',
-            test: /\.s?css$/,
-            chunks: 'all',
-            // priority: 20,
-            enforce: true,
-            minSize: 0
-          },
         vendors: {
             chunks: projectType === projType.spa ? "all" : "initial",
             name: "vendors",
@@ -53,5 +45,5 @@ module.exports = function(projectType) {
     return {
         runtimeChunk,
         splitChunks
-    }
+    };
 };
