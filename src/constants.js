@@ -20,5 +20,9 @@ module.exports = {
     switchOn: "on",
     switchOff: "off",
     typeFunc: "function",
-    styles: ['sass','css']
+    styles: ['sass','css'],
+    projType: {
+        spa: 'spa',
+        mpa: 'mpa'
+    }
 };

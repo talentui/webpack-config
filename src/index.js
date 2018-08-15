@@ -24,7 +24,7 @@ module.exports = (options = {}) => {
     //使用全部变量保存配置项，给loaders和plugins使用
     const checkDeps = require("./helpers/checkdeps")(options.styles || styles);
     if (checkDeps) process.exit(1);
-    const { globalObjectKey, appRoot, typeFunc } = require("./constants.js");
+    const { globalObjectKey, appRoot, typeFunc, projType } = require("./constants.js");
 
     let {
         publicPath,
@@ -70,7 +70,9 @@ module.exports = (options = {}) => {
             options.output
         ),
         //webpack 4的优化配置，
-        optimization: require("./helpers/optimization")(),
+        optimization: require("./helpers/optimization")(
+            options.projectType || projType.spa
+        ),
         module: {
             // 如果忘了export，就报错，而不是只级警告
             strictExportPresence: true,
