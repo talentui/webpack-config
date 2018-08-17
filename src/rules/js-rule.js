@@ -1,12 +1,22 @@
-module.exports = {
-    test: /\.(jsx?)$/,
-    exclude: function(path) {
-        if (path.indexOf("node_modules/webpack-dev-server/client") !== -1 || path.indexOf("/node_modules/@beisen/talent-ui") !== -1) {
-            return false;
-        }
+const { globalObjectKey } = require("../constants");
+var { jsWhitelist } = global[globalObjectKey];
 
-        return path.indexOf("/node_modules/") !== -1;
-    },
+let jsRule = {
+    test: /\.(jsx?)$/,
     loader: "babel-loader",
     options: require("../helpers/babel-config.js")
 };
+
+if (jsWhitelist) {
+    Object.assign(jsRule, {
+        include: jsWhitelist
+    });
+} else {
+    Object.assign(jsRule, {
+        exclude: function(path) {
+            return path.indexOf("/node_modules/") !== -1;
+        }
+    });
+}
+
+module.exports = jsRule;
