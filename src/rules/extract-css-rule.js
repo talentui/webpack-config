@@ -9,7 +9,12 @@ const { buildProd } = global[globalObjectKey];
 module.exports = {
     test: /\.css$/,
     use: [
-        MiniCssExtractPlugin.loader,
-        'css-loader'
+        {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+                publicPath: "../"
+            }
+        },
+        "css-loader"
     ]
 };
