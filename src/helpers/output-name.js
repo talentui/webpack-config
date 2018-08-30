@@ -23,7 +23,6 @@ module.exports = (output) => {
             output
         );
     } else {
-        console.log(3333);
         Object.assign(
             obj,
             {

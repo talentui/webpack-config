@@ -4,7 +4,6 @@ const {
     targetBrowsers,
     targets,
     transformInclude,
-    transformExclude,
     engines,
     buildProd
 } = global[globalObjectKey];
@@ -18,7 +17,6 @@ module.exports = Object.assign(
         targetBrowsers,
         targets,
         transformInclude,
-        transformExclude,
         engines
     })
 );

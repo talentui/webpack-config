@@ -24,7 +24,7 @@ module.exports = (options = {}) => {
     //使用全部变量保存配置项，给loaders和plugins使用
     const checkDeps = require("./helpers/checkdeps")(options.styles || styles);
     if (checkDeps) process.exit(1);
-    const { globalObjectKey, appRoot, typeFunc, projType } = require("./constants.js");
+    const { globalObjectKey, appRoot, typeFunc } = require("./constants.js");
 
     let {
         port,
@@ -51,7 +51,7 @@ module.exports = (options = {}) => {
     }
     return {
         mode,
-        context: moduleScope,
+        context: appRoot,
         entry: o.entry,
         output: require('./helpers/output-name')(options.output),
         //webpack 4的优化配置，

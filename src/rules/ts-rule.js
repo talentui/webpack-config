@@ -1,18 +1,36 @@
-const {globalObjectKey} = require('../constants')
+const { globalObjectKey } = require("../constants");
 const { moduleScope, buildProd } = global[globalObjectKey];
-const babelConfig = require("../helpers/babel-config.js");
+
+var use = [
+    {
+        loader: "cache-loader",
+        options: {
+            cacheIdentifier: `ts-cache-loader-${
+                require("../../package.json").version
+            }`
+        }
+    },
+    {
+        loader: "babel-loader",
+        options: require("../helpers/babel-config.js")
+    },
+    {
+        loader: "ts-loader",
+        options: {
+            transpileOnly: true,
+            happyPackMode: buildProd
+        }
+    }
+];
+
+if (buildProd) {
+    use.splice(1, 0, {
+        loader: "thread-loader"
+    });
+}
 
 module.exports = {
     test: /\.tsx?$/,
     include: moduleScope,
-    loader: "awesome-typescript-loader",
-    // loader: "ts-loader",
-    options: {
-        useBabel: true,
-        babelOptions: {
-            presets: babelConfig.presets,
-            plugins: babelConfig.plugins
-        },
-        useCache: !buildProd,
-    }
+    use
 };
