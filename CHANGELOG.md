@@ -1,3 +1,9 @@
+### 4.0.0-beta.16
+* 去掉targetBrowsers参数，统一使用targets来设置
+* 去掉transformExclude参数
+* 添加styles参数，如果没有使用sass测不提醒安装node-sass，这个太费时间
+* 添加projectType参数，描述项目类型，是module还是spa 还是mpa
+
 ### 2.2.2
 
 * 在构建生产环境执行uglify的时候，把console.xxx给干掉，避免IE在执行到的时候报错。

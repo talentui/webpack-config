@@ -38,8 +38,8 @@ describe("带参数初始化配置", () => {
         mode: 'production'
     });
 
-    it("context需要指向根目录下的src", () => {
-        expect(config.context).toBe(path.resolve(cwd, "./src"));
+    it("context需要始终保持在根目录，以防止dllcontext不一致", () => {
+        expect(config.context).toBe(path.resolve(cwd));
     });
 
     it("alias得正确的合并", () => {

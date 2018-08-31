@@ -14,7 +14,6 @@ module.exports = Object.assign(
         cacheDirectory: !buildProd
     },
     require("@talentui/get-babel-config")({
-        targetBrowsers,
         targets,
         transformInclude,
         engines

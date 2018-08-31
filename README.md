@@ -66,7 +66,6 @@
 
         //Array<string> 对js进行babel转换时需要包含或者不包含的我，支持 BabelPlugins和env的一些内置方法 你可以看这里 https://github.com/babel/babel-preset-env#include
         'transformInclude': [],
-        'transformExclude': [],
         'engines': ['react' ,'vue'] //可选参数不传默认为['react'], 可以是react或者vue中的一个或者多个。
         // 设置程序使用的语言，支持ts(typescript), js(typescript), mixed(typescript 和 javascript)。这会影响到项目支持的扩展名和使用的loader
         'language': "js",
