@@ -1,11 +1,11 @@
 const { globalObjectKey } = require("../constants.js");
 
 const {
-    targetBrowsers,
     targets,
     transformInclude,
     engines,
-    buildProd
+    buildProd,
+    loose
 } = global[globalObjectKey];
 
 module.exports = Object.assign(
@@ -16,6 +16,7 @@ module.exports = Object.assign(
     require("@talentui/get-babel-config")({
         targets,
         transformInclude,
-        engines
+        engines,
+        loose
     })
 );

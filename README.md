@@ -45,7 +45,6 @@
         // Array<string> | string 浏览器支持列表, 这个会影响你代码打包的速度和文件体积，支持的越新越好
         // replaced by tragetBrwosers: browsers: ["> 1%", "chrome >= 57"], removed from 2017.6.27 replacedBy targetBrowsers, 详情请查看浏览器列表 https://github.com/ai/browserslist
         // 如果不配置以下这两个选项，默认就是chrome > 55
-        'targetBrowsers': "chrome >= 55",
         //Object, 使用targets配置会覆盖targetBrowsers, 当你需要更明确的配置的时候，可以使用此配置项，配置方式请查看文档 https://github.com/babel/babel-preset-env#targets
         'targets': {},
         

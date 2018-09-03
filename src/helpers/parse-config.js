@@ -96,7 +96,8 @@ module.exports = options => {
         // js ts mixed //使用开发语言，js或者ts，或者混着用
         language: options.language || languageJs,
         projectType: options.projectType || projType.spa,
-        jsWhitelist: options.jsWhitelist
+        jsWhitelist: options.jsWhitelist,
+        loose: options.loose || true
     };
     return config;
 };

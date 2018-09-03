@@ -1,3 +1,7 @@
+
+### 4.0.0-beta.16
+* 添加loose参数，激活所有babel plugins的loose模式
+
 ### 4.0.0-beta.16
 * 去掉targetBrowsers参数，统一使用targets来设置
 * 去掉transformExclude参数
