@@ -97,7 +97,7 @@ module.exports = options => {
         language: options.language || languageJs,
         projectType: options.projectType || projType.spa,
         jsWhitelist: options.jsWhitelist,
-        loose: options.loose || true
+        loose: options.loose === undefined ? true : options.loose
     };
     return config;
 };
