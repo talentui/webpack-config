@@ -19,5 +19,9 @@ module.exports = {
     port: 3000,
     switchOn: "on",
     switchOff: "off",
-    typeFunc: "function"
+    typeFunc: "function",
+    projectType: {
+        module: 'module',
+        app: 'app'
+    }
 };

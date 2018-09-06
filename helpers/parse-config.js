@@ -87,7 +87,8 @@ module.exports = options => {
         // js ts mixed //使用开发语言，js或者ts，或者混着用
         language: options.language || languageJs,
         //外部传入的方法，接受参数是最终的webpack配置对象，自定义修改后需要接着返回
-        configPatch: options.configPatch
+        configPatch: options.configPatch,
+        projectType: options.projectType || 'app'
     };
     return config;
 };

@@ -6,7 +6,6 @@ const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
  * @options
  * root： optional 项目的根目录 默认为当前文件所有路径的上上级，最好还是传进来
  * entry: Required Webpack入口模块
- * dllList: optional dll列表 默认为空数组
  * hostPage: optional 本地承载页，需要是一个绝对路径, 默认的挂载点为#bsMain
  * browsers: optional 浏览器支持 默认为 > 1% 详情请看 https://github.com/ai/browserslist,
  * moduleDirectories: optional 数组 模块查找目录，默认为 node_modules,
@@ -30,7 +29,6 @@ module.exports = (options = {}) => {
         host,
         friendly,
         moduleScope,
-        dllList,
         outputUseHash,
         configPatch
     } = (global[globalObjectKey] = o = require("./helpers/parse-config")(
@@ -53,17 +51,7 @@ module.exports = (options = {}) => {
     const rawConfig = {
         context: moduleScope,
         entry: o.entry,
-        output: {
-            filename: outputUseHash
-                ? "[name]-[chunkhash].chunk.min.js"
-                : "[name].chunk.js",
-            chunkFilename: outputUseHash
-                ? "[name]-[chunkhash].chunk.min.js"
-                : "[name].chunk.js",
-            path: path.resolve(appRoot, "dist/"),
-            publicPath: publicPath,
-            pathinfo: !buildProd
-        },
+        output: require('./helpers/output-name')(options.output),
         module: {
             // makes missing exports an error instead of warning
             strictExportPresence: true,
