@@ -20,7 +20,7 @@ module.exports = {
     switchOn: "on",
     switchOff: "off",
     typeFunc: "function",
-    projectType: {
+    projType: {
         module: 'module',
         app: 'app'
     }
