@@ -1,6 +1,6 @@
 {
   "name": "@talentui/webpack-config",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "main": "./webpack.config.js",
   "author": {
     "name": "Li Guoming",
