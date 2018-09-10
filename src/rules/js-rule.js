@@ -33,9 +33,7 @@ if (jsWhitelist) {
     });
 } else {
     Object.assign(jsRule, {
-        exclude: function(path) {
-            return path.indexOf("/node_modules/") !== -1;
-        }
+        exclude: /(node_modules|bower_components)/
     });
 }
 
