@@ -2,10 +2,16 @@ var { globalObjectKey, projType } = require("../constants.js");
 var { useCommonChunk, projectType } = global[globalObjectKey];
 
 module.exports = function() {
+    let minimizer = [
+        require("../plugins/uglify-js-plugin"),
+        require("../plugins/optimize-css-asset-plugin")
+    ];
+
     if (!useCommonChunk || projectType === projType.module)
         return {
             runtimeChunk: false,
-            splitChunks: false
+            splitChunks: false,
+            minimizer
         };
 
     let runtimeChunk = {
@@ -43,15 +49,9 @@ module.exports = function() {
         cacheGroups
     };
 
-    let cacheConfig = {
+    return {
         runtimeChunk,
-        splitChunks
+        splitChunks,
+        minimizer
     };
-
-    return Object.assign(cacheConfig, {
-        minimizer: [
-            require("../plugins/uglify-js-plugin"),
-            require("../plugins/optimize-css-asset-plugin")
-        ]
-    });
 };
