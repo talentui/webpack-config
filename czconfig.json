@@ -17,6 +17,9 @@
     }, {
         "name": "Dll",
         "value": "dll"
+    },{
+        "name": "版本更新",
+        "value": "version"
     }, {
         "name": "全部",
         "value": "all"
