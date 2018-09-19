@@ -1,4 +1,6 @@
-const { globalObjectKey } = require("../constants");
+const path = require("path");
+const { globalObjectKey, appRoot } = require("../constants");
+
 var { jsWhitelist, buildProd } = global[globalObjectKey];
 
 var use = [
@@ -7,7 +9,11 @@ var use = [
         options: {
             cacheIdentifier: `js-cache-loader-${
                 require("../../package.json").version
-            }`
+            }`,
+            cacheDirectory: path.resolve(
+                appRoot,
+                "./node_modules/.cache/cache-loader"
+            )
         }
     },
     {

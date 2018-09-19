@@ -1,4 +1,5 @@
-const { globalObjectKey } = require("../constants");
+const path = require("path");
+const { globalObjectKey, appRoot } = require("../constants");
 const { moduleScope, buildProd } = global[globalObjectKey];
 
 var use = [
@@ -7,7 +8,11 @@ var use = [
         options: {
             cacheIdentifier: `ts-cache-loader-${
                 require("../../package.json").version
-            }`
+            }`,
+            cacheDirectory: path.resolve(
+                appRoot,
+                "./node_modules/.cache/cache-loader"
+            )
         }
     },
     {
