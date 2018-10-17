@@ -35,9 +35,9 @@ switch (language) {
 rules.push(require("./file-rule"));
 
 if (!devServer) {
-    rules.push(require("./extract-css-rule"), require("./extract-sass-rule"));
+    rules.push(require("./extract-css-rule"), require("./extract-sass-rule"), require('./extract-less-rule'));
 } else {
-    rules.push(require("./css-rule"), require("./sass-rule"));
+    rules.push(require("./css-rule"), require("./sass-rule"), require('./less-rule'));
 }
 
 module.exports = rules;

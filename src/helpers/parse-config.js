@@ -9,6 +9,7 @@ const {
     switchOn,
     switchOff,
     strProd,
+    strDev,
     projType
 } = require("../constants");
 const DllParser = require('@talentui/dll-parser')
@@ -97,7 +98,10 @@ module.exports = options => {
         language: options.language || languageJs,
         projectType: options.projectType || projType.spa,
         jsWhitelist: options.jsWhitelist,
-        loose: options.loose === undefined ? true : options.loose
+        loose: options.loose === undefined ? true : options.loose,
+        define: Object.assign({}, {
+            'process.env.NODE_ENV': buildProd ? strProd : strDev
+        }, options.define) 
     };
     return config;
 };

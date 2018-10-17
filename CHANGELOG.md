@@ -1,4 +1,8 @@
 
+### 4.0.3
+* 添加define参数用来定义definePlugins中的配置
+* 添加less loader
+
 ### 4.0.0-beta.16
 * 添加loose参数，激活所有babel plugins的loose模式
 

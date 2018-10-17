@@ -83,6 +83,10 @@
         },
         "styles": [any of 'sass' or 'css'],
         projectType: 'spa' || 'mpa' || 'module', //根据项目的类型区别项目构建方式
+        //definePlugin的配置
+        define: {
+            'process.env.NODE_ENV': 'production'
+        }
     })
 ```
 
