@@ -28,11 +28,11 @@ module.exports = options => {
     //从环境变量中取配置
     let { analysis, friendly, asset_path, dev_server } = process.env;
 
-    if(!dev_server){
+    if (!dev_server) {
         // 尝试通过启动模块来判断是不是使用了webpack-dev-server
-        const {mainModule={}} = process;
+        const { mainModule = {} } = process;
         const reg = /webpack-dev-server\.js/
-        if(reg.test(mainModule.filename)){
+        if (reg.test(mainModule.filename)) {
             dev_server = switchOn
         }
     }
@@ -81,7 +81,7 @@ module.exports = options => {
         targets: options.targets,
         //是否启用commonChunk
         useCommonChunk:
-            options.useCommonChunk === undefined 
+            options.useCommonChunk === undefined
                 ? true
                 : options.useCommonChunk,
         //包含的babel polyfill或者plugin
@@ -100,8 +100,9 @@ module.exports = options => {
         jsWhitelist: options.jsWhitelist,
         loose: options.loose === undefined ? true : options.loose,
         define: Object.assign({}, {
-            'process.env.NODE_ENV': buildProd ? strProd : strDev
-        }, options.define) 
+            'process.env.NODE_ENV': JSON.stringify(buildProd ? strProd : strDev)
+        }, options.define),
+        extractStyles: (options.extractStyles === undefined ? true : !!options.extractStyles) && !devServer
     };
     return config;
 };

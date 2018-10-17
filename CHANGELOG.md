@@ -1,4 +1,7 @@
 
+### 4.0.4
+* 添加extractStyles参数，配置是否抽离样式文件
+
 ### 4.0.3
 * 添加define参数用来定义definePlugins中的配置
 * 添加less loader

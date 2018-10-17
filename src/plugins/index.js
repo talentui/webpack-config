@@ -1,5 +1,5 @@
 var { globalObjectKey, languageJs } = require("../constants.js");
-var { devServer, analysis, friendly, buildProd, language } = global[
+var { devServer, analysis, friendly, buildProd, language, extractStyles } = global[
     globalObjectKey
 ];
 
@@ -26,7 +26,7 @@ if (devServer) {
 if (friendly && devServer)
     plugins.push(require("./friendly-errors-webpack-plugin"));
 
-if (!devServer) {
+if (extractStyles) {
     plugins.push(require('./mini-css-extract-plugin'));
 }
 

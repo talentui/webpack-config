@@ -4,7 +4,7 @@ const {
     languageJs,
     languageTs
 } = require("../constants.js");
-const { devServer, language, useLint } = global[globalObjectKey];
+const { devServer, language, useLint, extractStyles } = global[globalObjectKey];
 
 const preTsRule = require("./pre-ts-rule");
 const tsRule = require("./ts-rule");
@@ -34,7 +34,7 @@ switch (language) {
 
 rules.push(require("./file-rule"));
 
-if (!devServer) {
+if (extractStyles) {
     rules.push(require("./extract-css-rule"), require("./extract-sass-rule"), require('./extract-less-rule'));
 } else {
     rules.push(require("./css-rule"), require("./sass-rule"), require('./less-rule'));
