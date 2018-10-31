@@ -34,7 +34,7 @@
     "add-asset-html-webpack-plugin": "^2.1.3",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^8.0.0",
-    "cache-loader": "^1.2.2",
+    "cache-loader": "1.2.2",
     "case-sensitive-paths-webpack-plugin": "^2.1.2",
     "chalk": "^2.4.1",
     "clean-webpack-plugin": "^0.1.19",
