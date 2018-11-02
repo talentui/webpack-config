@@ -102,7 +102,8 @@ module.exports = options => {
         define: Object.assign({}, {
             'process.env.NODE_ENV': JSON.stringify(buildProd ? strProd : strDev)
         }, options.define),
-        extractStyles: (options.extractStyles === undefined ? true : !!options.extractStyles) && !devServer
+        extractStyles: (options.extractStyles === undefined ? true : !!options.extractStyles) && !devServer,
+        transModule: options.transModule || false
     };
     return config;
 };

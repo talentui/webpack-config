@@ -4,9 +4,20 @@
 ## 应用
 
 ```bash
-    yarn add @talentui/webpack-config --dev
+    yarn add @talentui/webpack-config webpack webpack-cli webpack-dev-server --dev
     //或者
-    npm install @talentui/webpack-config -D
+    npm install @talentui/webpack-config webpack webpack-cli webpack-dev-server -D
+```
+
+如果你在项目当中要转换sass，需要执行安装
+```
+    npm install node-sass sass-loader -D
+```
+
+如果你打算在项目中转换less文件，需要安装
+
+```
+    npm install less-loader -D
 ```
 
 在你的项目中创建webpack/webpack.config.js
@@ -81,7 +92,6 @@
             let rule = new OtherRule(options);
             return rules.concat(rule)
         },
-        "styles": [any of 'sass' or 'css'],
         projectType: 'spa' || 'mpa' || 'module', //根据项目的类型区别项目构建方式
         //definePlugin的配置
         define: {

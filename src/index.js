@@ -22,8 +22,8 @@ const { styles } = require("./constants");
 module.exports = (options = {}) => {
     // const ASSET_PATH = process.env.asset_path || "";
     //使用全部变量保存配置项，给loaders和plugins使用
-    const checkDeps = require("./helpers/checkdeps")(options.styles || styles);
-    if (checkDeps) process.exit(1);
+    // const checkDeps = require("./helpers/checkdeps")(options.styles || styles);
+    // if (checkDeps) process.exit(1);
     const { globalObjectKey, appRoot, typeFunc } = require("./constants.js");
 
     let {
