@@ -6,7 +6,7 @@ const {
     engines,
     buildProd,
     loose,
-    transModule
+    transModule: modules
 } = global[globalObjectKey];
 
 module.exports = Object.assign(
@@ -19,6 +19,6 @@ module.exports = Object.assign(
         transformInclude,
         engines,
         loose,
-        transModule
+        modules
     })
 );
