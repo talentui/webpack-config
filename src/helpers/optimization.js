@@ -20,7 +20,7 @@ module.exports = function() {
 
     let cacheGroups = {
         vendors: {
-            chunks: projectType === projType.spa ? "all" : "initial",
+            chunks: "initial",
             name: "vendors",
             minChunks: 1,
             test: /[\\/]node_modules[\\/]/,
