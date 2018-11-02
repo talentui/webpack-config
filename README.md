@@ -98,7 +98,9 @@
             'process.env.NODE_ENV': JSON.stringingfy('production')
         },
         //是否抽离样式文件 默认为true
-        extractStyles: true
+        extractStyles: true,
+        //用来配置babel-plugin-env的Modules参数，转换模块的类型，umd, commonjs, amd， 默认为false， 不转换
+        transModule: false
     })
 ```
 
