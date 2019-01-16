@@ -1,4 +1,5 @@
+const styleLoader = require('../helpers/get-style-loader');
 module.exports = {
     test: /\.scss$/,
-    use: ["style-loader", "css-loader", "sass-loader"]
+    use: [styleLoader, "css-loader", "sass-loader"]
 };
