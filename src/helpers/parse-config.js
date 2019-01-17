@@ -103,7 +103,8 @@ module.exports = options => {
             'process.env.NODE_ENV': JSON.stringify(buildProd ? strProd : strDev)
         }, options.define),
         extractStyles: (options.extractStyles === undefined ? true : !!options.extractStyles) && !devServer,
-        transModule: options.transModule || false
+        transModule: options.transModule || false, //是否对模块化的格式进行转换
+        cssModules: options.cssModules || false //是否启动对css modules的支持
     };
     return config;
 };

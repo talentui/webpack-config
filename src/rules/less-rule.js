@@ -1,4 +1,5 @@
+const styleLoader = require('./style-loader');
 module.exports = {
-    test: /\.less$/,
-    use: ['style-loader','css-loader', 'less-loader']
+  test: /\.less$/,
+  use: [styleLoader, 'css-loader', 'less-loader']
 };
