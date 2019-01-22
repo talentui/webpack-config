@@ -1,3 +1,7 @@
+### 4.1.1
+* 添加css nodules的支持，添加参加cssModules
+* 添加对自定义babel-config的支持，如果项目下有.babelrc或者babel.config.js，就可以覆盖默认配置
+
 
 ### 4.0.4
 * 添加extractStyles参数，配置是否抽离样式文件
