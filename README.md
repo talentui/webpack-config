@@ -1,5 +1,5 @@
-# Talent UI Webpack Config， 为Talent UI服务的生成Webpack的工具。
-在开发和生产环境中的大部分配置已经预置好了。
+# Almost 零配置生成构建项目需要的webpack配置，方便快速启动项目。
+预置了开发和生产环境当中大部分的内容，安装即用
 
 ## 应用
 
@@ -102,7 +102,8 @@
         //用来配置babel-plugin-env的Modules参数，转换模块的类型，umd, commonjs, amd， 默认为false， 不转换
         transModule: false,
         //是否启用css模块化，只支持.css文件, 如果想扩展其他，请contrib
-        cssModules: false
+        cssModules: false,
+        externals: {} //webpack的externals参数
     })
 ```
 
