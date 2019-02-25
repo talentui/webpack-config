@@ -34,8 +34,8 @@ if (analysis) {
     plugins.push(require("./bundle-analyzer-plugin"));
 }
 
-if(language !== languageJs) {
-    plugins.push(require("./fork-ts-checker-webpack-plugin"))
-}
+// if(language !== languageJs) {
+//     plugins.push(require("./fork-ts-checker-webpack-plugin"))
+// }
 
 module.exports = plugins;

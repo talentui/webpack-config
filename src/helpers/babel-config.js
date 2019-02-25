@@ -8,8 +8,10 @@ const {
   engines,
   buildProd,
   loose,
-  transModule: modules
+  transModule: modules,
+  language
 } = global[globalObjectKey];
+const {languageMixed, languageTs} = require('../constants')
 
 const configPath = {
   rc: path.resolve(cwd, '.babelrc'),
@@ -34,7 +36,8 @@ if (!customConfExist) {
       transformInclude,
       engines,
       loose,
-      modules
+      modules,
+      typescript: [languageMixed, languageTs].includes(language)
     })
   );
 }

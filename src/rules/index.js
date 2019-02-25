@@ -4,30 +4,28 @@ const {
     languageJs,
     languageTs
 } = require("../constants.js");
-const { devServer, language, useLint, extractStyles } = global[globalObjectKey];
+const { language, useLint, extractStyles } = global[globalObjectKey];
 
 const preTsRule = require("./pre-ts-rule");
 const tsRule = require("./ts-rule");
 const preJsRule = require("./pre-js-rule");
 const jsRule = require("./js-rule");
 
-var rules = [];
+var rules = [jsRule];
 
 switch (language) {
     case languageTs: {
         if (useLint) rules.push(preTsRule);
-        rules.push(tsRule);
         break;
     }
     case languageMixed: {
         if (useLint) rules.push(preJsRule, preTsRule);
-        rules.push(jsRule, tsRule);
+        rules.push(tsRule);
         break;
     }
     case languageJs:
     default: {
         if (useLint) rules.push(preJsRule);
-        rules.push(jsRule);
         break;
     }
 }

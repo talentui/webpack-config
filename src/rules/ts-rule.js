@@ -1,3 +1,4 @@
+// deprecated 这个文件即将被废弃
 const path = require("path");
 const { globalObjectKey, appRoot } = require("../constants");
 const { moduleScope, buildProd } = global[globalObjectKey];

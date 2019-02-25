@@ -29,7 +29,7 @@ if (buildProd) {
 }
 
 let jsRule = {
-    test: /\.(jsx?)$/,
+    test: /\.([t|j]sx?)$/,
     use
 };
 
