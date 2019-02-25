@@ -7,7 +7,6 @@ const {
 const { language, useLint, extractStyles } = global[globalObjectKey];
 
 const preTsRule = require("./pre-ts-rule");
-const tsRule = require("./ts-rule");
 const preJsRule = require("./pre-js-rule");
 const jsRule = require("./js-rule");
 
@@ -20,7 +19,6 @@ switch (language) {
     }
     case languageMixed: {
         if (useLint) rules.push(preJsRule, preTsRule);
-        rules.push(tsRule);
         break;
     }
     case languageJs:
