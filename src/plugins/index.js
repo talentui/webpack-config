@@ -1,5 +1,5 @@
-var { globalObjectKey, languageJs } = require("../constants.js");
-var { devServer, analysis, friendly, buildProd, language, extractStyles } = global[
+var { globalObjectKey } = require("../constants.js");
+var { devServer, analysis, friendly, buildProd, extractStyles } = global[
     globalObjectKey
 ];
 
@@ -33,9 +33,5 @@ if (extractStyles) {
 if (analysis) {
     plugins.push(require("./bundle-analyzer-plugin"));
 }
-
-// if(language !== languageJs) {
-//     plugins.push(require("./fork-ts-checker-webpack-plugin"))
-// }
 
 module.exports = plugins;

@@ -1,6 +1,5 @@
 const path = require("path");
 const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
-const { styles } = require("./constants");
 // 1.0.1
 /**
  * @options
@@ -22,8 +21,6 @@ const { styles } = require("./constants");
 module.exports = (options = {}) => {
     // const ASSET_PATH = process.env.asset_path || "";
     //使用全部变量保存配置项，给loaders和plugins使用
-    // const checkDeps = require("./helpers/checkdeps")(options.styles || styles);
-    // if (checkDeps) process.exit(1);
     const { globalObjectKey, appRoot, typeFunc } = require("./constants.js");
 
     let {
@@ -31,7 +28,6 @@ module.exports = (options = {}) => {
         host,
         friendly,
         moduleScope,
-        buildProd,
         mode
     } = (global[globalObjectKey] = o = require("./helpers/parse-config")(
         options
@@ -90,6 +86,6 @@ module.exports = (options = {}) => {
             tls: "empty",
             child_process: "empty"
         },
-        devtool: buildProd ? "cheap-source-map" : false
+        devtool:  "cheap-source-map"
     };
 };

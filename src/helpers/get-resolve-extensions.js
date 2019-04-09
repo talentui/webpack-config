@@ -18,16 +18,17 @@ let exts = [];
 
 let useTs = language === languageTs || language === languageMixed;
 
-let useJS = language === languageJs || language === languageMixed;
+// js始终应该支持，
+// let useJS = language === languageJs || language === languageMixed;
 
 let supportJSX = engines.indexOf(react) !== -1;
 
-if (useJS) exts.push(js);
+exts.push(js);
 
 if (useTs) exts.push(ts);
 
 if (supportJSX) {
-    if (useJS) exts.push(jsx);
+    exts.push(jsx);
     if (useTs) exts.push(tsx);
 }
 
