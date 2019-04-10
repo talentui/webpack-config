@@ -13,7 +13,7 @@ if(cssModules) {
   }
 }
 
-if(postCSS){
+if(postCSS && cssModules){
   cssLoader.options.importLoaders = 1;
 }
 
