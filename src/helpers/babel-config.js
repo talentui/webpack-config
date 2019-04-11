@@ -37,6 +37,7 @@ if (!customConfExist) {
       engines,
       loose,
       modules,
+      buildProd,
       typescript: [languageMixed, languageTs].includes(language)
     })
   );
